@@ -1,0 +1,40 @@
+
+.background-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://e1.pxfuel.com/desktop-wallpaper/581/154/desktop-wallpaper-backgrounds-for-login-page-login-page.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container-card {
+  position: absolute;
+  background-color: #dde2e8;
+  border-radius: 1rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.5rem;
+
+  & > .form-input-field {
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+    outline: transparent;
+  }
+}
+
+h1 {
+  font-weight: 600;
+}

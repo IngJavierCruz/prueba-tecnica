@@ -1,0 +1,43 @@
+<div class="background-card">
+  <div class="container-card">
+    <form class="form" [formGroup]="form" novalidate (ngSubmit)="onSubmit($event)">
+      <h2>Crear cuenta</h2>
+
+      <mat-form-field class="form-input-field">
+        <mat-label class="form-label-field">Nombres</mat-label>
+        <input matInput type="name" placeholder="Ingrese su correo" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="form-input-field">
+        <mat-label class="form-label-field">Apellidos</mat-label>
+        <input matInput type="lastName" placeholder="Ingrese su correo" formControlName="lastName">
+      </mat-form-field>
+
+      <mat-radio-group class="me-auto mb-4" formControlName="typeUser">
+        <mat-radio-button value="1">Admin</mat-radio-button>
+        <mat-radio-button value="2">Cliente</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field class="form-input-field">
+        <mat-label class="form-label-field">Email</mat-label>
+        <input matInput type="email" placeholder="Ingrese su correo" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="form-input-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="Ingrese su contraseña" [type]="type" formControlName="password">
+        <mat-hint>Minimo 8 digitos</mat-hint>
+        <button mat-icon-button matSuffix [title]="hide ? 'Mostrar' : 'Ocultar'" (click)="toggleVisibility($event)">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="d-flex align-items-center flex-column mt-3">
+        <button mat-flat-button color="primary">
+          Crear cuenta
+        </button>
+        <a routerLink="/auth/sign-in" class="mt-2">Ya tengo una cuenta</a>
+      </div>
+    </form>
+  </div>
+</div>

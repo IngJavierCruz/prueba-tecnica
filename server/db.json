@@ -1,0 +1,115 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "test",
+      "country": "australia",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "username": "sarah",
+      "country": "england",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "country": "usa",
+      "password": "123"
+    },
+    {
+      "username": "test2",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$U.DpBESxFt9w9xUbXqIwx.8jrk16i5lKwmopwLzwrP1HNXDP9.fKW",
+      "name": "aaa",
+      "lastName": "vvv",
+      "id": 5
+    },
+    {
+      "email": "test2@test.com",
+      "password": "$2a$10$NPi4Rw8SNsh0ScTuDMEk1OQN2xgCIIs8ISmFG7cuMW52.bOIIIVzG",
+      "name": "test",
+      "lastName": "test",
+      "typeUser": false,
+      "id": 6
+    },
+    {
+      "email": "test3@test.com",
+      "password": "$2a$10$MvPX3IglTBT81cXsR/V1ouIdoE8up1Xfs1I2dEC4s4k45BAgeHmfa",
+      "name": "test",
+      "lastName": "test",
+      "typeUser": false,
+      "id": 7
+    },
+    {
+      "email": "test4@test.com",
+      "password": "$2a$10$BhUvv9qMXrcDLx8bHlNojeNW9P7uQrT0S79MR.rG2r3S1eNkjR4eG",
+      "name": "test",
+      "lastName": "test",
+      "typeUser": "1",
+      "id": 8
+    },
+    {
+      "email": "test5@test.com",
+      "password": "$2a$10$vOSSefgn8WA5tUbsTLasFOFs3cmkXr8amebEWrkaFZ9w7hM6ZpSQC",
+      "name": "test",
+      "lastName": "test",
+      "typeUser": "1",
+      "id": 9
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "job": "Plumber"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "job": "developer"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "job": "Manager"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Spanner",
+      "category": "tools"
+    },
+    {
+      "id": 2,
+      "name": "Hammer",
+      "category": "tools"
+    },
+    {
+      "id": 3,
+      "name": "Screw driver",
+      "category": "tools"
+    },
+    {
+      "id": 4,
+      "name": "Paint brush",
+      "category": "paint"
+    },
+    {
+      "id": 5,
+      "name": "Paint roller",
+      "category": "paint"
+    },
+    {
+      "id": 6,
+      "name": "Paint",
+      "category": "paint"
+    }
+  ]
+}
