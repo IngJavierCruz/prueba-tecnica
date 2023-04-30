@@ -9,53 +9,34 @@
       "id": 1
     }
   ],
-  "profiles": [
+  "dynamicFormControls": [],
+  "dynamicForms": [
     {
-      "id": 1,
-      "userId": 1,
-      "job": "Plumber"
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "job": "developer"
-    },
-    {
-      "id": 3,
-      "userId": 3,
-      "job": "Manager"
+      "name": "Mi nuevo formulario",
+      "description": "esta es una practica",
+      "id": 1
     }
   ],
-  "products": [
+  "types_controls": [
     {
       "id": 1,
-      "name": "Spanner",
-      "category": "tools"
+      "name": "text",
+      "label": "Texto de respuesta breve"
     },
     {
       "id": 2,
-      "name": "Hammer",
-      "category": "tools"
+      "name": "datetime",
+      "label": "Fecha"
     },
     {
       "id": 3,
-      "name": "Screw driver",
-      "category": "tools"
+      "name": "select",
+      "label": "Lista desplegable"
     },
     {
       "id": 4,
-      "name": "Paint brush",
-      "category": "paint"
-    },
-    {
-      "id": 5,
-      "name": "Paint roller",
-      "category": "paint"
-    },
-    {
-      "id": 6,
-      "name": "Paint",
-      "category": "paint"
+      "name": "textarea",
+      "label": "Párrafo"
     }
   ]
 }

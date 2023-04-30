@@ -6,3 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::-ms-reveal {
   display: none;
 }
+.form-input-field {
+  width: 100%;
+  display: block;
+  font-size: 1rem;
+}

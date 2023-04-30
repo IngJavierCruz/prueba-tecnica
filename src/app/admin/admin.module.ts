@@ -5,6 +5,10 @@ import { SharedModule } from '@shared/shared.module';
 import { INTERCEPTOR_PROVIDERS } from '@interceptors/interceptors';
 // COMPONENTS
 import { AdminComponent } from './admin.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { FormComponent } from './components/form/form.component';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
+FormsComponent
 
 const MODULES = [
   PagesRoutingModule,
@@ -13,6 +17,9 @@ const MODULES = [
 
 const COMPONENTS: any[] = [
   AdminComponent,
+  FormsComponent,
+  FormComponent,
+  FormDialogComponent,
 ];
 
 @NgModule({

@@ -26,13 +26,6 @@ form {
   align-items: center;
   flex-direction: column;
   padding: 2.5rem;
-
-  & > .form-input-field {
-    width: 100%;
-    display: block;
-    font-size: 1rem;
-    outline: transparent;
-  }
 }
 
 h1 {

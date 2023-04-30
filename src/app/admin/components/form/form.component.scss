@@ -1,0 +1,33 @@
+.wrapper-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  height: 100%;
+}
+
+.wrapper-form {
+  height: calc(100% - 360px);
+  max-height: calc(100% - 360px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 100%;
+  padding-bottom: 20vh;
+
+  & .card-form-control {
+    margin: 0 auto;
+    width: 100%;
+    border-left: 8px solid #4285f4;
+  }
+
+  & .card-changes-pending {
+    border-left-color: rgb(207, 22, 22);
+  }
+}
+
+.card-main {
+  margin: 10px auto;
+  border-top: 8px solid seagreen;
+}
+

@@ -1,0 +1,19 @@
+.table-wrapper {
+  width: 100%;
+  // max-height: 800px;
+  // min-height: 500px;
+  height: calc(100% - 50px);
+}
+
+.table-container {
+  max-width: calc(100% - 1rem);
+  margin: 0 .5rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}

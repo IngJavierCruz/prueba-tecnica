@@ -1,6 +1,12 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>App</span>
+  <mat-toolbar-row class="align-items-center">
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <button class="ms-3" mat-button  [routerLink]="authConfigService.urlDefault">
+      Formularios
+    </button>
     <span class="spacer"></span>
 
     <span>{{ user | name}}</span>
