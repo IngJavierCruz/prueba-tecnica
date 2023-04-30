@@ -8,6 +8,7 @@ import { LocalStorageService } from '../storage/local-storage.service';
 // MODELS
 import { User, UserCredential } from '@models/authentication/User';
 import { StorageKeys } from '@constants/StorageKeys';
+import { redirectByTypeUserTo } from '@app/core/utils/path-default';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,22 @@ export class AuthenticationConfigurationService {
 
   loadUserStorage() : User {
     return this.localStorageService.getObject(StorageKeys.UserKey);
+  }
+
+  get isUserAuthenticated() : boolean {
+    return !!this.currentUserSubject.value;
+  }
+
+  get urlDefault() {
+    const { typeUser } = this.currentUserSubject.value || {};
+    return redirectByTypeUserTo(typeUser);
+  }
+
+  get typeUser(): number {
+    return this.currentUserSubject.value?.typeUser;
+  }
+
+  get accessToken(): string {
+    return this.localStorageService.getItem(StorageKeys.JwtKey);
   }
 }

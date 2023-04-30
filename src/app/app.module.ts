@@ -9,7 +9,7 @@ import { SharedModule } from '@shared/shared.module';
 // COMPONENTS
 import { AppComponent } from '@app/app.component';
 // INTERCEPTORS
-// import { INTERCEPTOR_PROVIDERS } from '@interceptors/interceptors';
+import { INTERCEPTOR_PROVIDERS_GLOBALS } from '@interceptors/interceptors';
 
 
 const MODULES = [
@@ -29,7 +29,7 @@ const COMPONENTS = [
   declarations: [...COMPONENTS],
   imports: [...MODULES],
   providers: [
-    // INTERCEPTOR_PROVIDERS,
+    INTERCEPTOR_PROVIDERS_GLOBALS,
   ],
   bootstrap: [AppComponent]
 })

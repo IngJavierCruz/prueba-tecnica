@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       name: ["test", Validators.required],
       lastName: ["test", Validators.required],
       password: ["P@$$word123", [Validators.required, Validators.minLength(8)]],
-      typeUser: '1',
+      typeUser: 1,
     });
   }
 
@@ -71,7 +71,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
           this.alertService.showSuccess('Usuario creado correctamente');
           this.spinner.hide();
           this.authenticationConfigurationService.start(data);
-          // this.router.navigate(['/app/home']);
+          console.log([this.authenticationConfigurationService.urlDefault]);
+          console.log(data);
+          this.router.navigate([this.authenticationConfigurationService.urlDefault]);
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);

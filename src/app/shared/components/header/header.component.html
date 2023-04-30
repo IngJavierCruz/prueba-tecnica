@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>App</span>
+    <span class="spacer"></span>
+
+    <span>{{ user | name}}</span>
+    <button class="ms-2" mat-icon-button matTooltip="Cerrar sesión" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

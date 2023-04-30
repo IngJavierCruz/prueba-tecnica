@@ -67,11 +67,15 @@ export class SignInComponent implements OnInit, OnDestroy {
         next: (data: UserCredential) => {
           this.spinner.hide();
           this.authenticationConfigurationService.start(data);
-          // this.router.navigate(['/app/home']);
+          this.router.navigate([this.authenticationConfigurationService.urlDefault]);
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);
-          this.alertService.showError(error.error);
+          if (error.error === "Cannot find user") {
+            this.alertService.showError('¡El usuario no existe!');
+          } else {
+            this.alertService.showError(error.error);
+          }
         }
       }).add(() => this.spinner.hide()));
   }

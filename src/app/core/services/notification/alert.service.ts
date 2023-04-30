@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 })
 export class AlertService {
   clientName = 'Challenge';
-  primaryColor = 'rgb(95, 63, 68)';
+  primaryColor = '#3f51b5';
 
   constructor() {}
 
