@@ -9,12 +9,36 @@
       "id": 1
     }
   ],
-  "dynamicFormControls": [],
+  "dynamicFormControls": [
+    {
+      "id": 1,
+      "label": "Hola que hace",
+      "typeControl": 1,
+      "dynamicFormId": 1
+    },
+    {
+      "dynamicFormId": 2,
+      "id": 3,
+      "label": "ASDAs",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 2,
+      "id": 4,
+      "label": "ahora si",
+      "typeControl": 1
+    }
+  ],
   "dynamicForms": [
     {
       "name": "Mi nuevo formulario",
       "description": "esta es una practica",
       "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Enoados",
+      "description": "enojads"
     }
   ],
   "types_controls": [

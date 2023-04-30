@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isEqual } from "lodash";
 // LIBS
 import { Subscription } from 'rxjs/internal/Subscription';
 // SERVICES
@@ -54,10 +55,10 @@ export class FormComponent implements OnInit, OnDestroy {
     });
 
     this.dynamicFormControl = this.fb.group({
+      dynamicFormId: [null, Validators.required],
       id: [null, [Validators.required]],
       label: ["", [Validators.required]],
       typeControl: [null, Validators.required],
-      dynamicFormId: [null, Validators.required]
     });
 
     this.loadTypesControls();
@@ -76,9 +77,9 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   get changesPending() {
-    const formControlBackup = JSON.stringify(this.forms[this.indexActive]);
-    const formControlActive = JSON.stringify(this.dynamicFormControl.value);
-    return formControlBackup !== formControlActive && this.indexActive > -1;
+    const formControlBackup = this.forms[this.indexActive] as DynamicFormControl;
+    const formControlActive = this.dynamicFormControl.value as DynamicFormControl;
+    return !isEqual(formControlBackup, formControlActive) && this.indexActive > -1;
   }
 
   loadTypesControls() {
@@ -190,9 +191,9 @@ export class FormComponent implements OnInit, OnDestroy {
 
   createNewFormControl() : DynamicFormControl {
     return {
+      dynamicFormId: this.dynamicFormActive.id!,
       label: '',
       typeControl: 1,
-      dynamicFormId: this.dynamicFormActive.id!
     };
   }
 

@@ -10,7 +10,7 @@
       </button>
     </div>
 
-    <form id="formMain" class="d-flex flex-column" [formGroup]="dynamicForm" (ngSubmit)="saveChanges($event)">
+    <form id="dynamicForm" class="d-flex flex-column" [formGroup]="dynamicForm" (ngSubmit)="saveChanges($event)">
       <mat-form-field class="form-input-field">
         <mat-label class="form-label-field">Nombre del formulario</mat-label>
         <input matInput type="text" placeholder="Nombre del formulario" formControlName="name">
@@ -21,7 +21,7 @@
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
-      <button mat-flat-button color="primary" class="my-3 ms-auto" type="submit" form="formMain">
+      <button mat-flat-button color="primary" class="my-3 ms-auto" type="submit" form="dynamicForm">
         Guardar
       </button>
     </form>
@@ -45,7 +45,8 @@
       </mat-card>
 
       <mat-card *ngIf="index === indexActive" id="card" class="card-form-control"
-        [ngClass]="{'card-changes-pending':  changesPending}">
+        [ngClass]="{'card-changes-pending':  changesPending}"
+        >
         <mat-card-content>
           <form class="form" id="dynamicFormControl" [formGroup]="dynamicFormControl"
             (ngSubmit)="saveChangesDynamicFormControl($event)">

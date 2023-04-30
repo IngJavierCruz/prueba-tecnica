@@ -15,7 +15,8 @@ export class DynamicFormService {
   }
 
   getAll() {
-    return this.http.get<DynamicForm[]>(this.url);
+    const url = `${this.url}?_embed=dynamicFormControls`
+    return this.http.get<DynamicForm[]>(url);
   }
 
   getById(id: number) {
