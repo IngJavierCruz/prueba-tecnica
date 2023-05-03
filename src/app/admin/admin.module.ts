@@ -8,7 +8,7 @@ import { AdminComponent } from './admin.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { FormComponent } from './components/form/form.component';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
-FormsComponent
+import { QuestionsComponent } from './components/form/questions/questions.component';
 
 const MODULES = [
   PagesRoutingModule,
@@ -19,6 +19,7 @@ const COMPONENTS: any[] = [
   AdminComponent,
   FormsComponent,
   FormComponent,
+  QuestionsComponent,
   FormDialogComponent,
 ];
 

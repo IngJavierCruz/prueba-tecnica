@@ -1,81 +1,38 @@
-<div class="container wrapper-section">
-  <mat-card class="container card-main">
-    <div class="d-flex flex-row justify-content-between align-items-center">
-      <button mat-icon-button class="my-3" routerLink="/admin/forms">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
+<mat-tab-group>
+  <mat-tab label="Preguntas">
+    <div class="wrapper-section">
+      <mat-card class="card-main">
+        <mat-card-content class="pt-1">
+          <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+            <button mat-icon-button color="primary" routerLink="/admin/forms">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
 
-      <button mat-icon-button class="my-3 me-auto" (click)="saveDynamicFormControl()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+            <button mat-icon-button color="primary" clickFocusRemove (click)="saveDynamicFormControl()">
+              <mat-icon>add</mat-icon>
+            </button>
 
-    <form id="dynamicForm" class="d-flex flex-column" [formGroup]="dynamicForm" (ngSubmit)="saveChanges($event)">
-      <mat-form-field class="form-input-field">
-        <mat-label class="form-label-field">Nombre del formulario</mat-label>
-        <input matInput type="text" placeholder="Nombre del formulario" formControlName="name">
-      </mat-form-field>
+            <button mat-icon-button color="primary" type="submit" form="form">
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
 
-      <mat-form-field class="form-input-field">
-        <mat-label>Descripción</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-      </mat-form-field>
-
-      <button mat-flat-button color="primary" class="my-3 ms-auto" type="submit" form="dynamicForm">
-        Guardar
-      </button>
-    </form>
-  </mat-card>
-
-  <section class="container wrapper-form">
-    <ng-container *ngFor="let item of forms; let index = index">
-      <mat-card *ngIf="index !== indexActive" class="card-form-control">
-        <mat-card-header>
-          <h2>{{item.label}}</h2>
-        </mat-card-header>
-        <mat-card-content>
-          <h5>{{typesControlObject[item.typeControl]?.label}}</h5>
-        </mat-card-content>
-
-        <mat-card-actions>
-          <button mat-icon-button color="primary" (click)="initEditDynamicFormControl(index)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-
-      <mat-card *ngIf="index === indexActive" id="card" class="card-form-control"
-        [ngClass]="{'card-changes-pending':  changesPending}"
-        >
-        <mat-card-content>
-          <form class="form" id="dynamicFormControl" [formGroup]="dynamicFormControl"
-            (ngSubmit)="saveChangesDynamicFormControl($event)">
+          <form id="form" class="d-flex flex-column" [formGroup]="form" (ngSubmit)="saveChanges($event)">
             <mat-form-field class="form-input-field">
-              <mat-label class="form-label-field">Pregunta</mat-label>
-              <input matInput type="text" placeholder="Pregunta" formControlName="label">
+              <mat-label class="form-label-field">Nombre del formulario</mat-label>
+              <input matInput type="text" placeholder="Nombre del formulario" formControlName="name">
             </mat-form-field>
 
             <mat-form-field class="form-input-field">
-              <mat-label>Tipo de control</mat-label>
-              <mat-select formControlName="typeControl">
-                <mat-option *ngFor="let item of typesControls" [value]="item.id">
-                  {{item.label}}
-                </mat-option>
-              </mat-select>
+              <mat-label>Descripción</mat-label>
+              <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
           </form>
         </mat-card-content>
-
-        <mat-card-actions align="end">
-          <button mat-icon-button color="warn" (click)="removeDynamicFormControl(item)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button class="my-3" color="primary" type="submit" form="dynamicFormControl">
-            <mat-icon>save</mat-icon>
-          </button>
-        </mat-card-actions>
       </mat-card>
-    </ng-container>
+      <app-questions [dynamicFormId]="dynamicForm.id!"></app-questions>
+    </div>
+  </mat-tab>
+  <mat-tab label="Respuestas">Respuestas</mat-tab>
+</mat-tab-group>
 
-  </section>
-</div>

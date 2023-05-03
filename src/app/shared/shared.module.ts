@@ -10,6 +10,8 @@ import { HeaderComponent } from './components/header/header.component';
 // DIRECTIVES
 // import { NumberIntegerDirective } from '@directives/number-integer.directive';
 // import { NumberDirective } from '@directives/number.directive';
+import { ClickFocusRemoveDirective } from './directives/click-focus-remove.directive';
+
 // MODULES
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MaterialModule } from './modules/material.module';
@@ -33,6 +35,7 @@ const PIPES: any[] = [
 ];
 
 const DIRECTIVES: any[] = [
+  ClickFocusRemoveDirective
   // NumberIntegerDirective,
   // NumberDirective,
 ];

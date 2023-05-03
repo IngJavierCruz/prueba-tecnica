@@ -11,12 +11,6 @@
   ],
   "dynamicFormControls": [
     {
-      "id": 1,
-      "label": "Hola que hace",
-      "typeControl": 1,
-      "dynamicFormId": 1
-    },
-    {
       "dynamicFormId": 2,
       "id": 3,
       "label": "ASDAs",
@@ -27,13 +21,37 @@
       "id": 4,
       "label": "ahora si",
       "typeControl": 1
+    },
+    {
+      "dynamicFormId": 1,
+      "id": 7,
+      "label": "Quien eres",
+      "typeControl": 2
+    },
+    {
+      "dynamicFormId": 1,
+      "id": 8,
+      "label": "Hola como te llamas",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 1,
+      "id": 10,
+      "label": "COMO TE LLAMAS",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 1,
+      "label": "",
+      "typeControl": 1,
+      "id": 11
     }
   ],
   "dynamicForms": [
     {
+      "id": 1,
       "name": "Mi nuevo formulario",
-      "description": "esta es una practica",
-      "id": 1
+      "description": "esta es una practica"
     },
     {
       "id": 2,
