@@ -1,0 +1,28 @@
+.card-item-active {
+  display: flex;
+  position: relative;
+
+  & .group-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    right: -5rem;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.card-item {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.card-item-active {
+  border-left: 8px solid #4285f4;
+}
+
+.card-item-active__changes-pending {
+  border-left-color: rgb(207, 22, 22);
+}

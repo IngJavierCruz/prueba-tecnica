@@ -9,6 +9,9 @@ import { FormsComponent } from './components/forms/forms.component';
 import { FormComponent } from './components/form/form.component';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { QuestionsComponent } from './components/form/questions/questions.component';
+import { QuestionPreviewComponent } from './components/form/question-preview/question-preview.component';
+import { QuestionComponent } from './components/form/question/question.component';
+import { FormQuestionComponent } from './components/form/form-question/form-question.component';
 
 const MODULES = [
   PagesRoutingModule,
@@ -19,7 +22,10 @@ const COMPONENTS: any[] = [
   AdminComponent,
   FormsComponent,
   FormComponent,
+  FormQuestionComponent,
+  QuestionComponent,
   QuestionsComponent,
+  QuestionPreviewComponent,
   FormDialogComponent,
 ];
 

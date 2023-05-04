@@ -1,54 +1,22 @@
 <section class="wrapper-card">
   <ng-container *ngFor="let item of dynamicFormControls; let index = index">
-    <mat-card *ngIf="index !== indexActive" class="card-item">
-      <mat-card-content>
-        <h2>{{item.label}}</h2>
-        <h5>{{typesControlObject[item.typeControl]?.label}}</h5>
-      </mat-card-content>
+    <app-question-preview
+      *ngIf="index !== indexActive; else isActive"
+      [data]="item"
+      [typesControlObject]="typesControlObject"
+      class="card-item"
+      (edit)="initEditDynamicFormControl(index)">
+    </app-question-preview>
 
-      <mat-card-actions>
-        <button mat-icon-button color="primary" clickFocusRemove (click)="initEditDynamicFormControl(index)">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-
-    <div class="card-active" *ngIf="index === indexActive">
-      <mat-card id="card" class="card-item card-item-active"
-        [ngClass]="{'card-changes-pending':  changesPending}">
-        <mat-card-content>
-          <form class="form" id="dynamicFormControl" [formGroup]="form"
-            (ngSubmit)="saveChangesDynamicFormControl($event)">
-            <mat-form-field class="form-input-field">
-              <mat-label class="form-label-field">Pregunta</mat-label>
-              <input matInput type="text" placeholder="Pregunta" formControlName="label">
-            </mat-form-field>
-
-            <mat-form-field class="form-input-field">
-              <mat-label>Tipo de control</mat-label>
-              <mat-select formControlName="typeControl">
-                <mat-option *ngFor="let item of typesControls" [value]="item.id">
-                  {{item.label}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </form>
-        </mat-card-content>
-
-        <div class="group-buttons">
-          <button mat-icon-button color="primary" clickFocusRemove (click)="saveDynamicFormControl()">
-            <mat-icon>add_circle_outline</mat-icon>
-          </button>
-
-          <button mat-icon-button color="primary" clickFocusRemove type="submit" form="dynamicFormControl">
-            <mat-icon>save</mat-icon>
-          </button>
-
-          <button mat-icon-button color="warn" clickFocusRemove (click)="removeDynamicFormControl(item)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </mat-card>
-    </div>
+    <ng-template #isActive>
+      <app-question
+        [data]="item"
+        [typesControls]="typesControls"
+        (create)="saveDynamicFormControl()"
+        (changes)="updateDynamicFormControl($event)"
+        (remove)="removeDynamicFormControl()"
+        class="card-active">
+      </app-question>
+    </ng-template>
   </ng-container>
 </section>

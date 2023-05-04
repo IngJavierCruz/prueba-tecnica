@@ -1,0 +1,12 @@
+<mat-card class="card-item">
+  <mat-card-content>
+    <h2>{{data.label}}</h2>
+    <h5>{{typesControlObject[data.typeControl]?.label}}</h5>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-icon-button color="primary" clickFocusRemove (click)="initEditDynamicFormControl()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

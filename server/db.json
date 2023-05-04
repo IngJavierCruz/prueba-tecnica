@@ -13,46 +13,47 @@
     {
       "dynamicFormId": 2,
       "id": 3,
-      "label": "ASDAs",
+      "label": "ASDAss",
       "typeControl": 1
     },
     {
       "dynamicFormId": 2,
       "id": 4,
-      "label": "ahora si",
+      "label": "ahora siss",
       "typeControl": 1
     },
     {
-      "dynamicFormId": 1,
-      "id": 7,
-      "label": "Quien eres",
-      "typeControl": 2
-    },
-    {
-      "dynamicFormId": 1,
-      "id": 8,
-      "label": "Hola como te llamas",
+      "dynamicFormId": 2,
+      "id": 5,
+      "label": "sassa",
       "typeControl": 1
     },
     {
-      "dynamicFormId": 1,
-      "id": 10,
-      "label": "COMO TE LLAMAS",
-      "typeControl": 1
-    },
-    {
-      "dynamicFormId": 1,
+      "dynamicFormId": 2,
       "label": "",
       "typeControl": 1,
-      "id": 11
+      "id": 6
+    },
+    {
+      "dynamicFormId": 2,
+      "id": 7,
+      "label": "eso es todo",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 2,
+      "id": 8,
+      "label": "asda",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 2,
+      "label": "",
+      "typeControl": 1,
+      "id": 9
     }
   ],
   "dynamicForms": [
-    {
-      "id": 1,
-      "name": "Mi nuevo formulario",
-      "description": "esta es una practica"
-    },
     {
       "id": 2,
       "name": "Enoados",

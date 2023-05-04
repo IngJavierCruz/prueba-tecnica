@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 // DIRECTIVES
 // import { NumberIntegerDirective } from '@directives/number-integer.directive';
 // import { NumberDirective } from '@directives/number.directive';
+import { AutoFocusDirective } from './directives/auto-focus.directive';
 import { ClickFocusRemoveDirective } from './directives/click-focus-remove.directive';
 
 // MODULES
@@ -35,6 +36,7 @@ const PIPES: any[] = [
 ];
 
 const DIRECTIVES: any[] = [
+  AutoFocusDirective,
   ClickFocusRemoveDirective
   // NumberIntegerDirective,
   // NumberDirective,

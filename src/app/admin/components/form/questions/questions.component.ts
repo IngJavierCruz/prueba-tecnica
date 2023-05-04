@@ -1,6 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { isEqual } from "lodash";
+import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
 // SERVICES
 import { AlertService } from '@services/notification/alert.service';
 import { TypeControlService } from '@services/form-control/type-control.service';
@@ -10,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CatalogBase } from '@models/TypeControl';
 import { DynamicFormControl } from '@models/DynamicFormControl';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { QuestionComponent } from '../question/question.component';
 
 @Component({
   selector: 'app-questions',
@@ -19,30 +18,20 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class QuestionsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   @Input() dynamicFormId!: number;
-  form!: FormGroup;
   typesControls: CatalogBase[] = [];
   typesControlObject:any = {};
-  data!: DynamicFormControl;
   dynamicFormControls: DynamicFormControl[] = [];
   indexActive = -1;
+  @ViewChild(QuestionComponent) questionComponent!: QuestionComponent;
 
   constructor(
-    private fb: FormBuilder,
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
     private typeControlService: TypeControlService,
     private dynamicFormControlService: DynamicFormControlService,
-
   ) { }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      dynamicFormId: [this.dynamicFormId, Validators.required],
-      id: [null, [Validators.required]],
-      label: ["", [Validators.required]],
-      typeControl: [null, Validators.required],
-    });
-
     this.loadTypesControls();
     this.loadDynamicFormControls();
   }
@@ -51,16 +40,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  get changesPending() {
-    const formControlBackup = this.dynamicFormControls[this.indexActive] as DynamicFormControl;
-    const formControlActive = this.form.value as DynamicFormControl;
-    return !isEqual(formControlBackup, formControlActive) && this.indexActive > -1;
-  }
-
   scrollToCard() {
     setTimeout(() => {
       document.querySelector('#card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      console.log("ejecutado");
     }, 200);
   }
 
@@ -99,92 +81,45 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     };
   }
 
-  removeDynamicFormControl(item: DynamicFormControl) {
-    this.spinner.show();
-    this.subscription.add(
-      this.dynamicFormControlService.delete(item.id!).subscribe({
-        next: () => {
-          this.loadDynamicFormControls();
-          this.indexActive = -1;
-          this.alertService.showSmallSuccess('Registro eliminado correctamente');
-        },
-        error: (err: any) => console.log(err.message)
-      }).add(() => this.spinner.hide()));
-  }
-
-  validateDynamicFormControl() {
-    this.scrollToCard();
-    this.form.markAsDirty();
-    this.form.markAllAsTouched();
-    this.alertService.showError('Completa los campos del formulario');
-  }
-
-  validateChangesPending() {
-    let changesPendient = true;
-    if (this.indexActive > -1) {
-      if (this.form.valid) {
-        if (!this.changesPending) {
-          changesPendient = false;
-        } else {
-          this.alertService.showError('Tienes cambios sin guardar');
-          this.scrollToCard();
-        }
-      } else {
-        this.validateDynamicFormControl();
-      }
-    } else {
-      changesPendient = false;
-    }
-    return changesPendient;
+  removeDynamicFormControl() {
+    this.loadDynamicFormControls();
+    this.indexActive = -1;
   }
 
   initEditDynamicFormControl(index: number) {
-    if (!this.validateChangesPending()) {
+    if (!this.questionComponent?.validateChangesPending()) {
       this.indexActive = index;
-      this.form.reset(this.dynamicFormControls[index]);
+    }
+    this.scrollToCard();
+  }
+
+  initSaveDynamicFormControl() {
+    if (!this.questionComponent?.validateChangesPending()) {
+      this.saveDynamicFormControl();
+    } else {
       this.scrollToCard();
     }
   }
 
-  saveChangesDynamicFormControl($event: Event) {
-    $event.preventDefault();
-    if (this.form.valid) {
-      this.updateDynamicFormControl();
-    } else {
-      this.alertService.showError('Completa los campos del formulario');
-    }
-  }
-
   saveDynamicFormControl() {
-    const changesPendient = this.validateChangesPending();
-    if (!changesPendient) {
-      this.spinner.show();
-      const data: DynamicFormControl = this.createNewFormControl();
-      this.subscription.add(
-        this.dynamicFormControlService.add(data).subscribe({
-          next: (data: DynamicFormControl) => {
-            this.form.reset(data);
-            this.dynamicFormControls.push(data);
-            this.indexActive = this.dynamicFormControls.length - 1;
-            this.scrollToCard();
-          },
-          error: (err: any) => console.log(err.message)
-        }).add(() => this.spinner.hide()));
-    }
-  }
-
-  updateDynamicFormControl() {
     this.spinner.show();
-    const data: DynamicFormControl = this.form.value;
+    const data: DynamicFormControl = this.createNewFormControl();
     this.subscription.add(
-      this.dynamicFormControlService.update(data).subscribe({
+      this.dynamicFormControlService.add(data).subscribe({
         next: (data: DynamicFormControl) => {
-          this.alertService.showSmallSuccess('Registro actualizado correctamente');
-          this.form.setValue(data);
-          this.dynamicFormControls[this.indexActive] = data;
+          this.dynamicFormControls.push(data);
+          this.indexActive = this.dynamicFormControls.length - 1;
+          this.scrollToCard();
         },
         error: (err: any) => console.log(err.message)
       }).add(() => this.spinner.hide()));
   }
 
+  updateDynamicFormControl(item: DynamicFormControl) {
+    this.dynamicFormControls[this.indexActive] = item;
+  }
+
+  existChangesQuestionActive() {
+    return !!this.questionComponent?.validateChangesPending();
+  }
 }

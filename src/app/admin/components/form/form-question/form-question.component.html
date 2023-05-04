@@ -1,0 +1,32 @@
+<div class="wrapper-section">
+  <mat-card class="card-main">
+    <mat-card-content class="pt-1">
+      <div class="d-flex flex-row justify-content-between align-items-center mb-2">
+        <button mat-icon-button color="primary" routerLink="/admin/forms">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" clickFocusRemove (click)="addNewDynamicFormControl()">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" clickFocusRemove type="submit" form="form">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+
+      <form id="form" class="d-flex flex-column" [formGroup]="form" (ngSubmit)="saveChanges($event)">
+        <mat-form-field class="form-input-field">
+          <mat-label class="form-label-field">Nombre del formulario</mat-label>
+          <input matInput type="text" placeholder="Nombre del formulario" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="form-input-field">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <app-questions [dynamicFormId]="dynamicForm.id!"></app-questions>
+</div>
