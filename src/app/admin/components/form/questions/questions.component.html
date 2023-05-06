@@ -12,6 +12,7 @@
       <app-question
         [data]="item"
         [typesControls]="typesControls"
+        [typesControlObject]="typesControlObject"
         (create)="saveDynamicFormControl()"
         (changes)="updateDynamicFormControl($event)"
         (remove)="removeDynamicFormControl()"

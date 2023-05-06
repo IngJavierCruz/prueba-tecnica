@@ -12,6 +12,7 @@ import { QuestionsComponent } from './components/form/questions/questions.compon
 import { QuestionPreviewComponent } from './components/form/question-preview/question-preview.component';
 import { QuestionComponent } from './components/form/question/question.component';
 import { FormQuestionComponent } from './components/form/form-question/form-question.component';
+import { QuestionOptionsComponent } from './components/form/question-options/question-options.component';
 
 const MODULES = [
   PagesRoutingModule,
@@ -26,6 +27,7 @@ const COMPONENTS: any[] = [
   QuestionComponent,
   QuestionsComponent,
   QuestionPreviewComponent,
+  QuestionOptionsComponent,
   FormDialogComponent,
 ];
 

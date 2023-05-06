@@ -19,7 +19,7 @@ export class DynamicFormControlService {
   }
 
   getByParentId(parentId: number) {
-    const url = `${this.url}?dynamicFormId=${parentId}`
+    const url = `${this.url}?dynamicFormId=${parentId}&_embed=typesControlsOptions`
     return this.http.get<DynamicFormControl[]>(url);
   }
 

@@ -19,7 +19,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   @Input() dynamicFormId!: number;
   typesControls: CatalogBase[] = [];
-  typesControlObject:any = {};
+  typesControlObject: any = {};
   dynamicFormControls: DynamicFormControl[] = [];
   indexActive = -1;
   @ViewChild(QuestionComponent) questionComponent!: QuestionComponent;

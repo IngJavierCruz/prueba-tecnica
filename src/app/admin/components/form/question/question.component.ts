@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { isEqual } from "lodash";
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+// LIBS
+import { isEqual } from 'lodash';
+import { Subscription } from 'rxjs/internal/Subscription';
 // SERVICES
 import { AlertService } from '@services/notification/alert.service';
 import { DynamicFormControlService } from '@services/form-control/dynamic-form-control.service';
@@ -8,7 +10,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 // MODELS
 import { CatalogBase } from '@models/TypeControl';
 import { DynamicFormControl } from '@models/DynamicFormControl';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { TypeControlOptionService } from '@services/form-control/type-control-option.service';
+import { TypeControlOption } from '@models/TypeControlOption';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-question',
@@ -19,6 +23,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   @Input() data!: DynamicFormControl;
   @Input() typesControls: CatalogBase[] = [];
+  @Input() typesControlObject: any = {};
   @Output() remove = new EventEmitter<DynamicFormControl>();
   @Output() create = new EventEmitter();
   @Output() changes = new EventEmitter<DynamicFormControl>();
@@ -29,21 +34,42 @@ export class QuestionComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
     private dynamicFormControlService: DynamicFormControlService,
+    private typeControlOptionService: TypeControlOptionService,
 
   ) { }
 
   ngOnInit() {
+    this.createForm();
+    this.onChangesTypeControl();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  createForm() {
     const { id, label, typeControl, dynamicFormId } = this.data;
     this.form = this.fb.group({
       dynamicFormId: [dynamicFormId, Validators.required],
       id: [id, [Validators.required]],
       label: [label, [Validators.required]],
       typeControl: [typeControl, Validators.required],
+      options: this.fb.array([])
     });
+
+
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  get options(): FormArray {
+    return this.form.get('options') as FormArray;
+  }
+
+  get typeControlId() {
+    return this.form.controls['typeControl']?.value as number || null;
+  }
+
+  get isTypeControlList() {
+    return [3, 4, 5].includes(this.typeControlId as any);
   }
 
   get changesPending() {
@@ -108,4 +134,138 @@ export class QuestionComponent implements OnInit, OnDestroy {
   addNew() {
     this.create.emit();
   }
+
+  loadTypeControlOptions() {
+    const { typesControlsOptions } = this.data;
+    (typesControlsOptions || []).forEach(x => {
+      const formOption = this.createFormTypeControlOption(x);
+      this.options.push(formOption);
+    });
+  }
+
+  deleteAllTypeControlOptions() {
+    const typesControlsOptions = (this.options.value as TypeControlOption[]);
+    this.options.clear();
+    (typesControlsOptions || []).forEach(x => {
+      if (x.id) {
+        this.deleteOptionComplete(x);
+        const formOption = this.createFormTypeControlOption(x);
+        this.options.push(formOption);
+      }
+    });
+  }
+
+  // loadTypeControlOptions() {
+  //   this.spinner.show();
+  //   this.subscription.add(
+  //     this.typeControlOptionService.getByParentId(this.data.id!).subscribe({
+  //       next: (data: TypeControlOption[]) => {
+  //         data.forEach(x => {
+  //           const newFormOption = this.addNewFormOption(x);
+  //           this.options.push(newFormOption);
+  //         });
+  //       },
+  //       error: (err: any) => console.log(err.message)
+  //     }).add(() => this.spinner.hide()));
+  // }
+
+  onChangesTypeControl() {
+    this.subscription.add(
+      this.form.controls['typeControl'].valueChanges.subscribe(x => {
+        if (this.isTypeControlList) {
+          this.options.clear();
+          this.loadTypeControlOptions();
+          if (this.options.length === 0) {
+            const [optionForm, option] = this.createDefaultOption();
+            this.options.push(optionForm);
+            this.addOption(option as TypeControlOption, 0);
+          }
+          const [optionFormDefault] = this.createDefaultOption();
+          this.options.push(optionFormDefault);
+        } else {
+          this.deleteAllTypeControlOptions();
+        }
+      }));
+  }
+
+  createDefaultOption() {
+    const option: TypeControlOption = this.createTypeControlOption();
+    const optionForm = this.createFormTypeControlOption(option);
+    return [optionForm, option];
+  }
+
+  createFormTypeControlOption(item: TypeControlOption) {
+    return this.fb.group({
+      dynamicFormControlId: [item.dynamicFormControlId, Validators.required],
+      id: [item.id, [Validators.required]],
+      label: [item.label, [Validators.required]],
+      typeControlId: [item.typeControlId, Validators.required],
+    });
+  }
+
+  createTypeControlOption(): TypeControlOption {
+    return {
+      dynamicFormControlId: this.data.id!,
+      typeControlId: this.typeControlId!,
+      label: 'Opción ' + (this.options.length + 1),
+    };
+  }
+
+  addOption(data: TypeControlOption, index: number) {
+    this.spinner.show();
+    this.subscription.add(
+      this.typeControlOptionService.add(data).subscribe({
+        next: (data: TypeControlOption) => {
+          const newFormOption = this.createFormTypeControlOption(data);
+          this.options.setControl(index, newFormOption);
+        },
+        error: (err: any) => console.log(err.message)
+      }).add(() => this.spinner.hide()));
+  }
+
+  deleteOption(item: TypeControlOption, index: number, $event: Event) {
+    $event.stopPropagation();
+    this.spinner.show();
+    this.subscription.add(
+      this.typeControlOptionService.delete(item.id!).subscribe({
+        next: () => {
+          this.options.removeAt(index);
+          const countOptions = this.options.length;
+          if (countOptions === 1) {
+            this.options.removeAt(0);
+            const [formOption] = this.createDefaultOption();
+            this.options.push(formOption);
+          } else {
+            this.options.removeAt(countOptions-1);
+            const [formOption] = this.createDefaultOption();
+            this.options.setControl(countOptions-1, formOption)
+          }
+        },
+        error: (err: any) => console.log(err.message)
+      }).add(() => this.spinner.hide()));
+  }
+
+  deleteOptionComplete(item: TypeControlOption) {
+    this.spinner.show();
+    this.subscription.add(
+      this.typeControlOptionService.delete(item.id!).subscribe({
+        next: () => {
+          
+        },
+        error: (err: any) => console.log(err.message)
+      }).add(() => this.spinner.hide()));
+  }
+
+  addNewOptionDefault(index: number) {
+    const option = this.options.at(index).value as TypeControlOption;
+    if (this.options.length === index + 1) {
+      const [optionForm] = this.createDefaultOption();
+      this.options.push(optionForm);
+    }
+    if (!option.id) {
+      this.addOption(option, index);
+    }
+  }
+
+
 }

@@ -11,3 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: block;
   font-size: 1rem;
 }
+
+.mat-mdc-form-field-focus-overlay,
+.mdc-text-field--filled {
+  background-color: #fff !important;
+}
