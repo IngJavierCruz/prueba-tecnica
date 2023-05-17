@@ -186,7 +186,6 @@ export class QuestionOptionsComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.typeControlOptionService.update(item).subscribe({
         next: (data: any) => {
-          console.log(data, 'update');
         },
         error: (err: any) => console.log(err.message)
       }));

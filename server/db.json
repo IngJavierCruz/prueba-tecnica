@@ -81,6 +81,12 @@
       "id": 8,
       "label": "fecha de cumpleaños",
       "typeControl": 2
+    },
+    {
+      "dynamicFormId": 5,
+      "id": 9,
+      "label": "edad",
+      "typeControl": 3
     }
   ],
   "dynamicForms": [
@@ -107,6 +113,12 @@
       "description": "evaluacion de la escuela",
       "status": "open",
       "id": 4
+    },
+    {
+      "id": 5,
+      "name": "Prueba final",
+      "description": "final",
+      "status": "process"
     }
   ],
   "types_controls": [
@@ -201,6 +213,30 @@
       "id": 10,
       "label": "femenino",
       "typeControlId": 5
+    },
+    {
+      "dynamicFormControlId": 9,
+      "id": 11,
+      "label": "12",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 9,
+      "id": 12,
+      "label": "16",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 9,
+      "id": 13,
+      "label": "27",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 9,
+      "id": 14,
+      "label": "45",
+      "typeControlId": 3
     }
   ],
   "formUser": [
@@ -226,7 +262,7 @@
       "id": 4,
       "dynamicFormId": 3,
       "userId": 4,
-      "status": "open"
+      "status": "answered"
     },
     {
       "userId": 2,
@@ -237,6 +273,18 @@
     {
       "id": 6,
       "dynamicFormId": 3,
+      "userId": 4,
+      "status": "answered"
+    },
+    {
+      "id": 7,
+      "dynamicFormId": 5,
+      "userId": 2,
+      "status": "answered"
+    },
+    {
+      "id": 8,
+      "dynamicFormId": 5,
       "userId": 4,
       "status": "answered"
     }
@@ -297,6 +345,85 @@
       "formUserId": 6,
       "label": "parrafo pregunta",
       "id": 7
+    },
+    {
+      "dynamicFormControlId": 3,
+      "typeControlOptionId": null,
+      "typeControlOption": "ssda",
+      "formUserId": 4,
+      "label": "plano",
+      "id": 8
+    },
+    {
+      "dynamicFormControlId": 4,
+      "typeControlOptionId": 3,
+      "typeControlOption": null,
+      "formUserId": 4,
+      "label": "Desplegable",
+      "id": 9
+    },
+    {
+      "dynamicFormControlId": 5,
+      "typeControlOptionId": 6,
+      "typeControlOption": null,
+      "formUserId": 4,
+      "label": "Verificación",
+      "id": 10
+    },
+    {
+      "dynamicFormControlId": 5,
+      "typeControlOptionId": 7,
+      "typeControlOption": null,
+      "formUserId": 4,
+      "label": "Verificación",
+      "id": 11
+    },
+    {
+      "dynamicFormControlId": 5,
+      "typeControlOptionId": 8,
+      "typeControlOption": null,
+      "formUserId": 4,
+      "label": "Verificación",
+      "id": 12
+    },
+    {
+      "dynamicFormControlId": 6,
+      "typeControlOptionId": 9,
+      "typeControlOption": null,
+      "formUserId": 4,
+      "label": "Sexo",
+      "id": 13
+    },
+    {
+      "dynamicFormControlId": 7,
+      "typeControlOptionId": null,
+      "typeControlOption": "sdada",
+      "formUserId": 4,
+      "label": "parrafo pregunta",
+      "id": 14
+    },
+    {
+      "dynamicFormControlId": 8,
+      "typeControlOptionId": null,
+      "typeControlOption": "2023-05-18T06:00:00.000Z",
+      "formUserId": 4,
+      "label": "fecha de cumpleaños",
+      "id": 15
+    },
+    {
+      "dynamicFormControlId": 9,
+      "typeControlOptionId": 13,
+      "typeControlOption": null,
+      "formUserId": 8,
+      "label": "edad",
+      "id": 16
+    },
+    {
+      "dynamicFormControlId": 9,
+      "typeControlOptionId": 13,
+      "typeControlOption": null,
+      "formUserId": 7,
+      "id": 17
     }
   ]
 }

@@ -10,7 +10,7 @@ import { StatusFormUserPipe } from './pipes/status-form-user.pipe';
 import { CountStatusFormUserPipe } from './pipes/count-status-form-user.pipe';
 // COMPONENTS
 import { HeaderComponent } from './components/header/header.component';
-
+import { FormAnswerComponent } from './components/form/form-answer.component';
 // DIRECTIVES
 // import { NumberIntegerDirective } from '@directives/number-integer.directive';
 // import { NumberDirective } from '@directives/number.directive';
@@ -32,7 +32,8 @@ const MODULES = [
 ];
 
 const COMPONENTS: any[] = [
-  HeaderComponent
+  HeaderComponent,
+  FormAnswerComponent,
 ];
 
 const PIPES: any[] = [

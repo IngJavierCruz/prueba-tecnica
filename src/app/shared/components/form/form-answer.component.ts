@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormUser } from '@models/FormUser';
 // LIBS
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -14,13 +14,15 @@ import { FormUserService } from '@services/form-control/form-user.service';
 import { DynamicFormControl } from '@models/DynamicFormControl';
 import { FormAnswer } from '@models/FormAnswer';
 import { STATUS_FORM_USER } from '@constants/Status';
+import { AuthenticationConfigurationService } from '../../../core/services/authentication/authentication-configuration.service';
+import { TYPE_USER } from '@constants/TypeUser';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-form-answer',
+  templateUrl: './form-answer.component.html',
+  styleUrls: ['./form-answer.component.scss']
 })
-export class FormComponent implements OnInit, OnDestroy {
+export class FormAnswerComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   formUser!: FormUser;
   controls: DynamicFormControl[] = [];
@@ -34,6 +36,8 @@ export class FormComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private formAnswerService: FormAnswerService,
     private formUserService: FormUserService,
+    private router: Router,
+    private authConfigService: AuthenticationConfigurationService,
     private dynamicFormControlService: DynamicFormControlService) { }
 
   ngOnInit() {
@@ -56,6 +60,22 @@ export class FormComponent implements OnInit, OnDestroy {
 
   get formCompleted() {
     return this.formUser.status === STATUS_FORM_USER.answered;
+  }
+
+  get isAdmin() {
+    return this.authConfigService.typeUser === TYPE_USER.admin;
+  }
+
+  get formDisabled() {
+    return this.formCompleted || this.isAdmin;
+  }
+
+  navigateBack() {
+    if (this.isAdmin) {
+      this.router.navigate(['/admin/forms', this.formUser.dynamicFormId]);
+    } else {
+      this.router.navigate(['/app/forms']);
+    }
   }
 
   searchAnswers(id: number) : FormAnswer[] {
@@ -110,14 +130,13 @@ export class FormComponent implements OnInit, OnDestroy {
           next: (x: FormAnswer[]) => {
             this.formAnswers = x;
             this.createForm();
-            this.formCompleted && this.form.disable();
+            this.formDisabled && this.form.disable();
           },
           error: (err: any) => console.log(err.message)
         }).add(() => this.spinner.hide()));
   }
 
-  saveChanges($event: Event) {
-    $event.preventDefault();
+  saveChanges() {
     if (this.form.valid) {
       this.sendForm();
     } else {
@@ -131,13 +150,13 @@ export class FormComponent implements OnInit, OnDestroy {
     const data: FormAnswer[] = [];
     this.formsOptions.controls.forEach((x, index) => {
       const { typeControlOptionId } = x.value;
-      const { typeControl, label } = this.controls[index];
+      const { typeControl } = this.controls[index];
       if (typeControl === 4) {
         (typeControlOptionId as number[]).forEach(y => {
-          data.push({... x.value, typeControlOptionId: y, label })
+          data.push({... x.value, typeControlOptionId: y })
         })
       } else {
-        data.push({...x.value, label})
+        data.push({...x.value})
       }
     });
     return data;

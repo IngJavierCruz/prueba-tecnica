@@ -4,7 +4,6 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { INTERCEPTOR_PROVIDERS } from '@interceptors/interceptors';
 // COMPONENTS
-import { FormComponent } from './components/form/form.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { PagesComponent } from './pages.component';
 
@@ -14,7 +13,6 @@ const MODULES = [
 ];
 
 const COMPONENTS: any[] = [
-  FormComponent,
   FormsComponent,
   PagesComponent,
 ];

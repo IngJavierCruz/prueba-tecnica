@@ -1,15 +1,23 @@
-<form class="form" [formGroup]="form" (ngSubmit)="saveChanges($event)">
+<form class="form" [formGroup]="form">
   <mat-card class="card-header">
     <mat-card-content>
+      <div class="d-flex">
+        <button mat-icon-button color="primary" (click)="navigateBack()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
       <div *ngIf="formCompleted" class="card-main alert alert-success" role="alert">
         Formulario contestado
+      </div>
+      <div *ngIf="isAdmin" class="card-main alert alert-success" role="alert">
+        Formulario solo lectura
       </div>
       <h1>{{formUser.dynamicForm?.name}}</h1>
       <hr>
       <p>{{formUser.dynamicForm?.description}}</p>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-flat-button color="primary" clickFocusRemove type="submit" *ngIf="!formCompleted">
+      <button mat-flat-button color="primary" clickFocusRemove type="button" (click)="saveChanges()" *ngIf="!formDisabled">
         Enviar
       </button>
     </mat-card-actions>

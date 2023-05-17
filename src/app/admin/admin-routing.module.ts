@@ -4,6 +4,8 @@ import { AdminComponent } from './admin.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { FormComponent } from './components/form/form.component';
 import { DynamicFormResolver } from '@app/core/resolvers/dynamic-form.resolver';
+import { FormAnswerComponent } from '@shared/components/form/form-answer.component';
+import { FormUserResolver } from '@app/core/resolvers/form-user.resolver';
 
 const routes: Routes = [
   {
@@ -18,8 +20,13 @@ const routes: Routes = [
         path: ':id',
         component: FormComponent,
         resolve: { data: DynamicFormResolver}
-      }
+      },
     ]
+  },
+  {
+    path: 'forms-answers/:id',
+    component: FormAnswerComponent,
+    resolve: { data: FormUserResolver}
   },
   {
     path: '',
