@@ -101,6 +101,12 @@
       "name": "nuevo",
       "description": "nuevo",
       "status": "process"
+    },
+    {
+      "name": "Escuela",
+      "description": "evaluacion de la escuela",
+      "status": "open",
+      "id": 4
     }
   ],
   "types_controls": [

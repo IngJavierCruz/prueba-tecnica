@@ -10,6 +10,7 @@ import { FormComponent } from './components/form/form.component';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { QuestionsComponent } from './components/form/questions/questions.component';
 import { QuestionComponent } from './components/form/question/question.component';
+import { FormsAnswersComponent } from './components/forms-answers/forms-answers.component';
 import { FormQuestionComponent } from './components/form/form-question/form-question.component';
 import { QuestionOptionsComponent } from './components/form/question-options/question-options.component';
 
@@ -22,6 +23,7 @@ const COMPONENTS: any[] = [
   AdminComponent,
   FormsComponent,
   FormComponent,
+  FormsAnswersComponent,
   FormQuestionComponent,
   QuestionComponent,
   QuestionsComponent,

@@ -1,5 +1,6 @@
 import { DynamicForm } from "./DynamicForm";
 import { FormAnswer } from "./FormAnswer";
+import { User } from "./authentication/User";
 
 export interface FormUser {
   id?: number;
@@ -8,4 +9,5 @@ export interface FormUser {
   status: string;
   dynamicForm?: DynamicForm;
   formAnswer?: FormAnswer[];
+  user?: User[];
 }

@@ -20,6 +20,11 @@ export class FormUserService {
     return this.http.get<FormUser[]>(url);
   }
 
+  getByParentId(parentId: number) {
+    const url = `${this.url}?dynamicFormId=${parentId}&_expand=dynamicForm&_expand=user`
+    return this.http.get<FormUser[]>(url);
+  }
+
   getById(id: number) {
     const url = `${this.url}/${id}?_expand=dynamicForm&_embed=formAnswer`
     return this.http.get<FormUser>(url);
