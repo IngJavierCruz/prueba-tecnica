@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { TypeControlOption } from '@models/TypeControlOption';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,9 +38,25 @@ export class TypeControlOptionService {
     return this.http.put<TypeControlOption>(url, item);
   }
 
+  updateRange(items: TypeControlOption[]) {
+    const request = items.map((x) => {
+      const url = `${this.url}/${x.id}`
+      return this.http.put<TypeControlOption>(url, x);
+    });
+    return forkJoin(request);
+  }
+
   delete(id: number) {
     const url = `${this.url}/${id}`
     return this.http.delete(url);
+  }
+
+  deleteRange(items: TypeControlOption[]) {
+    const request = items.map((x) => {
+      const url = `${this.url}/${x.id}`
+      return this.http.delete(url);
+    });
+    return forkJoin(request);
   }
 
 }

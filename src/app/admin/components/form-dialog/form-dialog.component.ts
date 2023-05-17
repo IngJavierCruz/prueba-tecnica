@@ -34,6 +34,7 @@ export class FormDialogComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       name: ["", [Validators.required, Validators.maxLength(20)]],
       description: ["", [Validators.required, Validators.maxLength(100)]],
+      status: ["open", [Validators.required, Validators.maxLength(100)]],
     });
   }
 

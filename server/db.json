@@ -7,21 +7,100 @@
       "lastName": "test",
       "typeUser": 1,
       "id": 1
+    },
+    {
+      "email": "clientet@cliente.com",
+      "password": "$2a$10$/b0GfDkCpb3ggRsexyf/a.eX8527uZR7AzibJGoOqMzNkYi78ZyIq",
+      "name": "cliente",
+      "lastName": "cliente",
+      "typeUser": 2,
+      "id": 2
+    },
+    {
+      "email": "test2@test.com",
+      "password": "$2a$10$F1WanR5TtbTiCBLMkmSabO0Ou9MDljBSR3TJ7U5/bACpdxtdyAbiS",
+      "name": "test2",
+      "lastName": "test2",
+      "typeUser": 1,
+      "id": 3
+    },
+    {
+      "email": "test3@test.com",
+      "password": "$2a$10$/hOIwKaTIA14Fb.irgLe9eIpZUp5XlKyGnL11.Hbr5CfyecwNNf9K",
+      "name": "test3",
+      "lastName": "test3",
+      "typeUser": 2,
+      "id": 4
     }
   ],
   "dynamicFormControls": [
     {
       "dynamicFormId": 1,
-      "label": "",
-      "typeControl": 1,
-      "id": 1
+      "id": 1,
+      "label": "hola",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 2,
+      "id": 2,
+      "label": "asdasda",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 3,
+      "label": "plano",
+      "typeControl": 1
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 4,
+      "label": "Desplegable",
+      "typeControl": 3
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 5,
+      "label": "Verificación",
+      "typeControl": 4
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 6,
+      "label": "Sexo",
+      "typeControl": 5
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 7,
+      "label": "parrafo pregunta",
+      "typeControl": 6
+    },
+    {
+      "dynamicFormId": 3,
+      "id": 8,
+      "label": "fecha de cumpleaños",
+      "typeControl": 2
     }
   ],
   "dynamicForms": [
     {
-      "name": "Encuesta #1",
-      "description": "Que estamos haciendo",
-      "id": 1
+      "id": 1,
+      "name": "form",
+      "description": "esto es un form",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "name": "sds",
+      "description": "asdas",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "name": "nuevo",
+      "description": "nuevo",
+      "status": "process"
     }
   ],
   "types_controls": [
@@ -41,20 +120,177 @@
       "label": "Lista desplegable"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "checklist",
       "label": "Casillas de verificación"
     },
     {
-      "id": 3,
+      "id": 5,
       "name": "multiple",
       "label": "Opción múltiple"
     },
     {
-      "id": 4,
+      "id": 6,
       "name": "textarea",
       "label": "Párrafo"
     }
   ],
-  "typesControlsOptions": []
+  "typesControlsOptions": [
+    {
+      "dynamicFormControlId": 4,
+      "id": 1,
+      "label": "edad 1",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 4,
+      "id": 2,
+      "label": "edad 2",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 4,
+      "id": 3,
+      "label": "edad 3",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 4,
+      "id": 4,
+      "label": "edad 4",
+      "typeControlId": 3
+    },
+    {
+      "dynamicFormControlId": 5,
+      "id": 5,
+      "label": "futbol",
+      "typeControlId": 4
+    },
+    {
+      "dynamicFormControlId": 5,
+      "id": 6,
+      "label": "voleibol",
+      "typeControlId": 4
+    },
+    {
+      "dynamicFormControlId": 5,
+      "id": 7,
+      "label": "futbol americano",
+      "typeControlId": 4
+    },
+    {
+      "dynamicFormControlId": 5,
+      "id": 8,
+      "label": "tenis",
+      "typeControlId": 4
+    },
+    {
+      "dynamicFormControlId": 6,
+      "id": 9,
+      "label": "masculino",
+      "typeControlId": 5
+    },
+    {
+      "dynamicFormControlId": 6,
+      "id": 10,
+      "label": "femenino",
+      "typeControlId": 5
+    }
+  ],
+  "formUser": [
+    {
+      "userId": 2,
+      "dynamicFormId": 1,
+      "status": "open",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "dynamicFormId": 2,
+      "status": "open",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "dynamicFormId": 3,
+      "status": "open",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "dynamicFormId": 3,
+      "userId": 4,
+      "status": "open"
+    },
+    {
+      "userId": 2,
+      "dynamicFormId": 3,
+      "status": "open",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "dynamicFormId": 3,
+      "userId": 4,
+      "status": "answered"
+    }
+  ],
+  "formAnswer": [
+    {
+      "dynamicFormControlId": 3,
+      "typeControlOptionId": null,
+      "typeControlOption": "ahora",
+      "formUserId": 6,
+      "label": "plano",
+      "id": 1
+    },
+    {
+      "dynamicFormControlId": 4,
+      "typeControlOptionId": 2,
+      "typeControlOption": null,
+      "formUserId": 6,
+      "label": "Desplegable",
+      "id": 2
+    },
+    {
+      "dynamicFormControlId": 5,
+      "typeControlOptionId": 7,
+      "typeControlOption": null,
+      "formUserId": 6,
+      "label": "Verificación",
+      "id": 3
+    },
+    {
+      "dynamicFormControlId": 6,
+      "typeControlOptionId": 10,
+      "typeControlOption": null,
+      "formUserId": 6,
+      "label": "Sexo",
+      "id": 4
+    },
+    {
+      "dynamicFormControlId": 5,
+      "typeControlOptionId": 6,
+      "typeControlOption": null,
+      "formUserId": 6,
+      "label": "Verificación",
+      "id": 5
+    },
+    {
+      "dynamicFormControlId": 8,
+      "typeControlOptionId": null,
+      "typeControlOption": "2023-05-04T06:00:00.000Z",
+      "formUserId": 6,
+      "label": "fecha de cumpleaños",
+      "id": 6
+    },
+    {
+      "dynamicFormControlId": 7,
+      "typeControlOptionId": null,
+      "typeControlOption": "si vamos a contestar bien",
+      "formUserId": 6,
+      "label": "parrafo pregunta",
+      "id": 7
+    }
+  ]
 }

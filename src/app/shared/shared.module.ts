@@ -4,6 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 // PIPES
+import { NamePipe } from './pipes/name.pipe';
+import { StatusPipe } from './pipes/status.pipe';
+import { StatusFormUserPipe } from './pipes/status-form-user.pipe';
+import { CountStatusFormUserPipe } from './pipes/count-status-form-user.pipe';
 // COMPONENTS
 import { HeaderComponent } from './components/header/header.component';
 
@@ -16,7 +20,7 @@ import { ClickFocusRemoveDirective } from './directives/click-focus-remove.direc
 // MODULES
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MaterialModule } from './modules/material.module';
-import { NamePipe } from './pipes/name.pipe';
+
 
 const MODULES = [
   CommonModule,
@@ -32,7 +36,10 @@ const COMPONENTS: any[] = [
 ];
 
 const PIPES: any[] = [
-  NamePipe
+  NamePipe,
+  StatusPipe,
+  StatusFormUserPipe,
+  CountStatusFormUserPipe,
 ];
 
 const DIRECTIVES: any[] = [

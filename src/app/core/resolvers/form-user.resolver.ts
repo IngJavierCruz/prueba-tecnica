@@ -6,36 +6,36 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 import { NgxSpinnerService } from 'ngx-spinner';
 // SERVICES
 import { AlertService } from '@services/notification/alert.service';
-import { DynamicFormService } from '@services/form-control/dynamic-form.service';
+import { FormUserService } from '@services/form-control/form-user.service';
 // MODELS
-import { DynamicForm } from "@models/DynamicForm";
+import { FormUser } from '@models/FormUser';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FormResolver implements Resolve<any> {
+export class FormUserResolver implements Resolve<any> {
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
     private alertService: AlertService,
-    private dynamicFormService: DynamicFormService,
+    private formUserService: FormUserService,
   ) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<DynamicForm> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<FormUser> {
     this.spinner.show();
     const id = route.params['id'];
-    return this.dynamicFormService.getById(id)
+    return this.formUserService.getById(id)
       .pipe(
         map((x: any) => {
           this.spinner.hide();
-          return x as DynamicForm;
+          return x as FormUser;
         }),
         catchError(err => {
           console.log(err);
           this.alertService.showError(err.error);
           this.spinner.hide();
-          this.router.navigate(['/admin/forms']);
+          this.router.navigate(['/app/forms']);
           return of(err.error)
         }));
   }

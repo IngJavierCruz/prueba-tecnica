@@ -4,17 +4,18 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 // COMPONENTS
-import { FormDialogComponent } from '../form-dialog/form-dialog.component';
 // LIBS
 import { Subscription } from 'rxjs/internal/Subscription';
 // SERVICES
-import { DynamicFormService } from '@services/form-control/dynamic-form.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from '@services/notification/alert.service';
+import { FormUserService } from '@services/form-control/form-user.service';
+import { AuthenticationConfigurationService } from '@services/authentication/authentication-configuration.service';
 // MODELS
 import { COLUMNS } from './columns';
-import { DynamicForm } from '@models/DynamicForm';
-import { STATUS_FORM } from '@constants/Status';
+import { FormUser } from '@models/FormUser';
+import { STATUS_FORM_USER } from '@constants/Status';
+import { TYPE_USER } from '@constants/TypeUser';
 
 @Component({
   selector: 'app-forms',
@@ -24,55 +25,54 @@ import { STATUS_FORM } from '@constants/Status';
 export class FormsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   displayedColumns: string[] = COLUMNS;
-  dataSource = new MatTableDataSource<DynamicForm>([]);
-  STATUS_FORM = STATUS_FORM;
+  dataSource = new MatTableDataSource<FormUser>([]);
+  STATUS_FORM_USER = STATUS_FORM_USER;
 
   constructor(
     private alertService: AlertService,
-    private dynamicFormService: DynamicFormService,
+    private authConfigService: AuthenticationConfigurationService,
+    private formUserService: FormUserService,
     public dialog: MatDialog,
     private router: Router,
     private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
-    this.loadData();
+    if (this.isAdmin) {
+      this.loadData();
+    } else {
+      this.loadData();
+    }
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
+  get isAdmin() {
+    return this.authConfigService.typeUser === TYPE_USER.admin;
+  }
+
   loadData() {
+    const id = this.authConfigService.userId;
     this.spinner.show();
     this.subscription.add(
-      this.dynamicFormService.getAll().subscribe({
-        next: (data: any) => {
+      this.formUserService.getAll(id).subscribe({
+        next: (data: FormUser[]) => {
           this.dataSource.data = data;
         },
         error: (err: any) => console.log(err.message)
       }).add(() => this.spinner.hide()));
   }
 
-  edit(item: DynamicForm) {
-    this.router.navigate(['/admin/forms/', item.id] );
-  }
-
-  async remove(item: DynamicForm) {
-    if (await this.alertService.showConfirmationDeletion()) {
-      this.spinner.show();
-      this.subscription.add(
-        this.dynamicFormService.delete(item.id!).subscribe({
-          next: () => {
-            this.alertService.showSmallSuccess('Registro eliminado correctamente');
-            this.loadData();
-          },
-          error: (err: any) => console.log(err.message)
-        }).add(() => this.spinner.hide()));
-    }
-  }
-
-  openFormDialog() {
-    this.dialog.open(FormDialogComponent);
+  loadAll() {
+    this.spinner.show();
+    this.subscription.add(
+      this.formUserService.getAll().subscribe({
+        next: (data: FormUser[]) => {
+          this.dataSource.data = data;
+        },
+        error: (err: any) => console.log(err.message)
+      }).add(() => this.spinner.hide()));
   }
 }

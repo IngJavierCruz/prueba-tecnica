@@ -58,6 +58,10 @@ export class AuthenticationConfigurationService {
     return this.currentUserSubject.value?.typeUser;
   }
 
+  get userId(): number {
+    return this.currentUserSubject.value?.id;
+  }
+
   get accessToken(): string {
     return this.localStorageService.getItem(StorageKeys.JwtKey);
   }

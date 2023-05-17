@@ -15,10 +15,6 @@ const routes: Routes = [
         component: FormsComponent
       },
       {
-        path: 'new',
-        component: FormComponent
-      },
-      {
         path: ':id',
         component: FormComponent,
         resolve: { data: DynamicFormResolver}

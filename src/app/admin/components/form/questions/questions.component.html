@@ -1,23 +1,15 @@
 <section class="wrapper-card">
-  <ng-container *ngFor="let item of dynamicFormControls; let index = index">
-    <app-question-preview
-      *ngIf="index !== indexActive; else isActive"
-      [data]="item"
-      [typesControlObject]="typesControlObject"
-      class="card-item"
-      (edit)="initEditDynamicFormControl(index)">
-    </app-question-preview>
+  <app-question
+    *ngFor="let item of dynamicFormControls; let index = index; trackBy: trackByFn"
+    [data]="item"
+    [disabled]="disabled"
+    [typesControls]="typesControls"
+    [typesControlObject]="typesControlObject"
+    (create)="saveDynamicFormControl()"
+    (changes)="updateDynamicFormControl($event, index)"
+    (remove)="removeDynamicFormControl($event)"
+    class="card-question"
+  >
+  </app-question>
 
-    <ng-template #isActive>
-      <app-question
-        [data]="item"
-        [typesControls]="typesControls"
-        [typesControlObject]="typesControlObject"
-        (create)="saveDynamicFormControl()"
-        (changes)="updateDynamicFormControl($event)"
-        (remove)="removeDynamicFormControl()"
-        class="card-active">
-      </app-question>
-    </ng-template>
-  </ng-container>
 </section>

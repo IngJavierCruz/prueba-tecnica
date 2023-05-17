@@ -1,11 +1,11 @@
-<mat-card id="card" class="card-item card-item-active" [ngClass]="{'card-changes-pending':  changesPending}">
+<mat-card class="card-item">
   <mat-card-content>
-    <form class="form" id="dynamicFormControl" [formGroup]="form" (ngSubmit)="saveChanges($event)">
+    <form class="form" [formGroup]="form">
       <div class="row">
         <div class="col-lg-6">
           <mat-form-field class="form-input-field">
             <mat-label class="form-label-field">Pregunta</mat-label>
-            <input matInput type="text" autofocus placeholder="Pregunta" formControlName="label">
+            <input matInput type="text" #labelFocus placeholder="Pregunta" formControlName="label">
           </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -18,42 +18,23 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <mat-divider *ngIf="isTypeControlList" class="mb-4"></mat-divider>
-        <ng-container formArrayName="options">
-          <ng-container *ngFor="let optionForm of options.controls; let i = index">
-            <div *ngIf="isTypeControlList" class="col-12">
-              <div [formGroupName]="i">
-                <mat-form-field class="form-input-field" appearance="fill">
-                  <span matTextPrefix>{{i + 1}}.-&nbsp;</span>
-                  <input matInput type="text" placeholder="Agregar una opción" formControlName="label"
-                    (focus)="addNewOptionDefault(i)">
-                  <button
-                  *ngIf="optionForm.value.id"
-                  matSuffix mat-icon-button aria-label="Clear" type="button"
-                    (click)="deleteOption(optionForm.value, i, $event)">
-                    <mat-icon>close</mat-icon>
-                  </button>
-                </mat-form-field>
-              </div>
-            </div>
-          </ng-container>
-        </ng-container>
+
+        <app-question-options
+          [dynamicFormControlId]="data.id!"
+          [typeControl]="typeControlId!"
+          [disabled]="disabled"
+        >
+        </app-question-options>
       </div>
     </form>
-
-    <!-- <app-question-options></app-question-options> -->
   </mat-card-content>
 
   <div class="group-buttons">
-    <button mat-icon-button color="primary" clickFocusRemove (click)="addNew()">
+    <button mat-icon-button color="primary" [disabled]="disabled" clickFocusRemove (click)="addNew()">
       <mat-icon>add_circle_outline</mat-icon>
     </button>
 
-    <button mat-icon-button color="primary" clickFocusRemove type="submit" form="dynamicFormControl">
-      <mat-icon>save</mat-icon>
-    </button>
-
-    <button mat-icon-button color="warn" clickFocusRemove (click)="delete()">
+    <button mat-icon-button color="warn" [disabled]="disabled" clickFocusRemove (click)="delete()">
       <mat-icon>delete</mat-icon>
     </button>
   </div>

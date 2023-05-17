@@ -15,7 +15,7 @@ export class DynamicFormService {
   }
 
   getAll() {
-    const url = `${this.url}?_embed=dynamicFormControls`
+    const url = `${this.url}?_embed=dynamicFormControls&_embed=formUser`
     return this.http.get<DynamicForm[]>(url);
   }
 
@@ -29,6 +29,12 @@ export class DynamicFormService {
   }
 
   update(item: DynamicForm) {
+    const url = `${this.url}/${item.id}`
+    return this.http.put<DynamicForm>(url, item);
+  }
+
+  send(item: DynamicForm) {
+    item.status = 'process';
     const url = `${this.url}/${item.id}`
     return this.http.put<DynamicForm>(url, item);
   }

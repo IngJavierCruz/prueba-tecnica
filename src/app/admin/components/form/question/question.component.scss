@@ -1,30 +1,24 @@
-.card-item-active {
+.card-item {
   display: flex;
   position: relative;
+  margin: 0 auto;
+  width: 600px;
+  padding: 2rem 1rem;
+  border-left: 8px solid #4285f4;
 
   & .group-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 1rem;
     position: absolute;
     right: -5rem;
+    top: 0;
     height: 100%;
     min-height: 150px;
     max-height: 200px;
     border-radius: 5px;
+    background-color: #fff;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
-}
-
-.card-item {
-  margin: 0 auto;
-  width: 600px;
-}
-
-.card-item-active {
-  border-left: 8px solid #4285f4;
-}
-
-.card-item-active__changes-pending {
-  border-left-color: rgb(207, 22, 22);
 }

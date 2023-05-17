@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 1rem;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.card-header {
+  border-top: 8px solid seagreen;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  padding: 1rem;
+}
+
+.card-item {
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  padding: 1rem;
+  border-left: 8px solid #4285f4;
+}

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, QueryList, ElementRef, ViewChildren } from '@angular/core';
+// LIBS
+import { Subscription } from 'rxjs/internal/Subscription';
 // SERVICES
 import { AlertService } from '@services/notification/alert.service';
 import { TypeControlService } from '@services/form-control/type-control.service';
@@ -7,7 +9,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 // MODELS
 import { CatalogBase } from '@models/TypeControl';
 import { DynamicFormControl } from '@models/DynamicFormControl';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { QuestionComponent } from '../question/question.component';
 
 @Component({
@@ -17,19 +18,21 @@ import { QuestionComponent } from '../question/question.component';
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
+  dynamicControlsRefs!: QueryList<ElementRef>;
   @Input() dynamicFormId!: number;
+  @Input() disabled: boolean = false;
   typesControls: CatalogBase[] = [];
   typesControlObject: any = {};
   dynamicFormControls: DynamicFormControl[] = [];
-  indexActive = -1;
-  @ViewChild(QuestionComponent) questionComponent!: QuestionComponent;
+  @ViewChildren(QuestionComponent) questionsComponent!: QueryList<QuestionComponent>
 
   constructor(
     private alertService: AlertService,
     private spinner: NgxSpinnerService,
     private typeControlService: TypeControlService,
     private dynamicFormControlService: DynamicFormControlService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.loadTypesControls();
@@ -40,10 +43,24 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  scrollToCard() {
+  disabledForm() {
+    this.questionsComponent.forEach(x => {
+      x.disabledForm();
+    })
+  }
+
+  trackByFn(index: number, item: DynamicFormControl) {
+    return item.id!;
+  }
+
+  scrollToCard(index: number) {
     setTimeout(() => {
-      document.querySelector('#card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
+      document.getElementsByClassName('card-question')[index]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 250);
+  }
+
+  focusToCard(index: number) {
+    setTimeout(() => this.questionsComponent.get(index)?.focus());
   }
 
   loadDynamicFormControls() {
@@ -81,24 +98,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     };
   }
 
-  removeDynamicFormControl() {
-    this.loadDynamicFormControls();
-    this.indexActive = -1;
-  }
-
-  initEditDynamicFormControl(index: number) {
-    if (!this.questionComponent?.validateChangesPending()) {
-      this.indexActive = index;
-    }
-    this.scrollToCard();
-  }
-
-  initSaveDynamicFormControl() {
-    if (!this.questionComponent?.validateChangesPending()) {
-      this.saveDynamicFormControl();
-    } else {
-      this.scrollToCard();
-    }
+  removeDynamicFormControl(item: DynamicFormControl) {
+    this.dynamicFormControls = this.dynamicFormControls.filter(x => x.id !== item.id);
   }
 
   saveDynamicFormControl() {
@@ -108,18 +109,20 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       this.dynamicFormControlService.add(data).subscribe({
         next: (data: DynamicFormControl) => {
           this.dynamicFormControls.push(data);
-          this.indexActive = this.dynamicFormControls.length - 1;
-          this.scrollToCard();
+          const newIndex = this.dynamicFormControls.length - 1;
+          this.scrollToCard(newIndex);
+          this.focusToCard(newIndex);
         },
         error: (err: any) => console.log(err.message)
       }).add(() => this.spinner.hide()));
   }
 
-  updateDynamicFormControl(item: DynamicFormControl) {
-    this.dynamicFormControls[this.indexActive] = item;
+  updateDynamicFormControl(item: DynamicFormControl, index: number) {
+    this.dynamicFormControls[index] = item;
   }
 
-  existChangesQuestionActive() {
-    return !!this.questionComponent?.validateChangesPending();
+  invalidQuestions() {
+    return this.questionsComponent
+    .map(x => x.formValid()).filter(x => !x).length;
   }
 }

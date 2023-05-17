@@ -1,0 +1,34 @@
+<mat-divider *ngIf="isTypeControlList" class="mb-4"></mat-divider>
+
+<form [formGroup]="form">
+  <ng-container formArrayName="options">
+    <ng-container *ngFor="let formOption of formsOptions.controls; let i = index; trackBy: trackByFn">
+    <div class="col-12" [id]="'form-option' + formOption.value.id">
+        <div [formGroupName]="i" class="control-group">
+          <mat-form-field class="form-input-field">
+            <button *ngIf="typeControlId === 3" class="typeControlList" mat-icon-button matPrefix disabled>
+              {{i + 1}}.-&nbsp;
+            </button>
+            <button *ngIf="typeControlId === 4" mat-icon-button matPrefix disabled>
+              <mat-icon>check_box_outline_blank</mat-icon>
+            </button>
+            <button *ngIf="typeControlId === 5" mat-icon-button matPrefix disabled>
+              <mat-icon>radio_button_checked</mat-icon>
+            </button>
+            <input #refInputs matInput type="text" placeholder="Agregar una opción" formControlName="label">
+          </mat-form-field>
+
+          <div class="button-actions">
+            <button mat-icon-button class="button-action__item" [disabled]="disabled" (click)="deleteOption(formOption.value, i, $event)">
+              <mat-icon>remove</mat-icon>
+            </button>
+
+            <button mat-icon-button class="button-action__item" [disabled]="disabled" (click)="addNewOptionDefault(i)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</form>

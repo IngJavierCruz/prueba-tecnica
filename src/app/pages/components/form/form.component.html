@@ -1,0 +1,72 @@
+<form class="form" [formGroup]="form" (ngSubmit)="saveChanges($event)">
+  <mat-card class="card-header">
+    <mat-card-content>
+      <div *ngIf="formCompleted" class="card-main alert alert-success" role="alert">
+        Formulario contestado
+      </div>
+      <h1>{{formUser.dynamicForm?.name}}</h1>
+      <hr>
+      <p>{{formUser.dynamicForm?.description}}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-flat-button color="primary" clickFocusRemove type="submit" *ngIf="!formCompleted">
+        Enviar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <ng-container formArrayName="options">
+    <mat-card class="card-item" *ngFor="let formOption of formsOptions.controls; let index = index">
+      <mat-card-content [formGroupName]="index" class="pt-4">
+        <p>{{controls[index].label}}</p>
+        <hr>
+        <ng-container [ngSwitch]="controls[index].typeControl">
+          <mat-form-field *ngSwitchCase="1" class="form-input-field" appearance="fill">
+            <input matInput type="text" placeholder="Tu respuesta" formControlName="typeControlOption">
+            <mat-error>Requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="2" class="form-input-field" appearance="fill">
+            <input readonly matInput [matDatepicker]="picker" formControlName="typeControlOption" (click)="picker.open()">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="3" class="form-input-field" appearance="fill">
+            <mat-select formControlName="typeControlOptionId">
+              <mat-option *ngFor="let item of controls[index].typesControlsOptions" [value]="item.id">
+                {{item.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="4" class="form-input-field" appearance="fill">
+            <mat-select formControlName="typeControlOptionId" multiple>
+              <mat-option *ngFor="let item of controls[index].typesControlsOptions" [value]="item.id">
+                {{item.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Requerido</mat-error>
+          </mat-form-field>
+
+          <ng-container *ngSwitchCase="5">
+            <mat-radio-group color="primary"  class="form-input-field d-flex flex-column" formControlName="typeControlOptionId">
+              <mat-radio-button *ngFor="let item of controls[index].typesControlsOptions" [value]="item.id">
+                {{item.label}}
+              </mat-radio-button>
+            </mat-radio-group>
+            <mat-error *ngIf="formsOptions.at(index).invalid && formsOptions.at(index).touched">Requerido</mat-error>
+          </ng-container>
+
+          <mat-form-field *ngSwitchCase="6" class="form-input-field" appearance="fill">
+            <textarea matInput placeholder="Tu respuesta" formControlName="typeControlOption"></textarea>
+            <mat-error>Requerido</mat-error>
+          </mat-form-field>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</form>

@@ -1,17 +1,8 @@
 .wrapper-card {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 2.5rem;
   width: 100%;
   padding-bottom: 10vh;
-}
-
-.card-active {
-  display: flex;
-  position: relative;
-}
-
-.card-item {
-  margin: 0 auto;
-  width: 600px;
+  padding-top: 2rem;
 }
