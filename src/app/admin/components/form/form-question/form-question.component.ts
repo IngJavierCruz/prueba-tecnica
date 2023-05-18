@@ -96,7 +96,7 @@ export class FormQuestionComponent implements OnInit, OnDestroy {
           if (this.users.length > 0) {
             this.sendDynamicForm();
           } else {
-            this.alertService.showError('No existen usuarios que puedan responder el formulario');
+            this.alertService.showError('No existen usuarios que puedan responder el formulario, crea una cuenta de usuario cliente');
           }
         } else {
           this.alertService.showError('Completa los campos del formulario');

@@ -24,14 +24,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err: any) => {
-        const error =  err?.error?.message || err.message || 'Error en la petición';
-        this.alertService.showError(error);
+        this.alertService.showError('Error en la petición');
         console.log(err, 'error interceptor');
         if (err.status === 401) {
           this.dialog.closeAll();
           this.authConfigService.reset();
         }
-        return throwError(() => error);
+        return throwError(() => err);
       })
     );
   }

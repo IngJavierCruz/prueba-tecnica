@@ -71,6 +71,7 @@ export class SignInComponent implements OnInit, OnDestroy {
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);
+          console.log(error.error);
           if (error.error === "Cannot find user") {
             this.alertService.showError('¡El usuario no existe!');
           } else {
