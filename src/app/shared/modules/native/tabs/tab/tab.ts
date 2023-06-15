@@ -93,6 +93,5 @@ export class NativeTab extends NativeTabBase implements AfterViewInit {
   override _explicitContent: TemplateRef<any> = undefined!;
 
   ngAfterViewInit() {
-    // console.log('NativeTab', this._explicitContent);
   }
 }

@@ -126,7 +126,6 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
   }
 
   ngAfterViewInit() {
-    console.log(this.tabBodyWrapper?.nativeElement);
   }
 
   ngOnDestroy() {

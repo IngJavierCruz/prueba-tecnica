@@ -216,9 +216,7 @@ export class NativeTabBody extends NativeTabBodyBase {
   constructor(elementRef: ElementRef<HTMLElement>) {
     super(elementRef,);
   }
-
 }
-
 
 export type NativeTabBodyPositionState =
   | 'left'

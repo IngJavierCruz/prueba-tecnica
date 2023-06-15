@@ -31,7 +31,6 @@ $tab-text-color: #535353;
   }
 }
 
-
 .tab-labels {
   display: flex;
   flex-direction: row;
@@ -55,7 +54,15 @@ $tab-text-color: #535353;
     user-select: none;
     z-index: 2;
 
-    .text { white-space: nowrap;}
+    & i {
+      width: 1rem;
+      height: 1rem;
+      line-height: 1rem;
+    }
+
+    & .text {
+      white-space: nowrap;
+    }
 
     &:hover {
       background-color: lighten($tab-color, 3%);
@@ -99,7 +106,7 @@ $tab-text-color: #535353;
     height: 100%;
     overflow: auto;
 
-    &[style*='visibility: hidden'] {
+    &[style*="visibility: hidden"] {
       display: none;
     }
   }

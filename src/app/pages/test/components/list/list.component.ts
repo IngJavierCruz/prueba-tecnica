@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('contructor: ', this.title);
+    console.log('init: ', this.title);
   }
 
 }

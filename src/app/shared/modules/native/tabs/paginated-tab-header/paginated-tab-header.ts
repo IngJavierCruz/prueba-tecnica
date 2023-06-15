@@ -27,10 +27,7 @@ export abstract class PaginatedTabHeader implements OnInit, AfterViewInit, OnDes
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-    setTimeout(() => console.log('tabs from paginated : ', this.tabs), 1000);
-    setTimeout(() => this.checkScrollingControls(), 100);
-  }
+  ngAfterViewInit() {}
 
   ngOnDestroy(): void {}
 
