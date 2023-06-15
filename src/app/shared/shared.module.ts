@@ -20,12 +20,14 @@ import { ClickFocusRemoveDirective } from './directives/click-focus-remove.direc
 // MODULES
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MaterialModule } from './modules/material.module';
+import { NativeModule } from './modules/native/module';
 
 
 const MODULES = [
   CommonModule,
   FormsModule,
   MaterialModule,
+  NativeModule,
   RouterModule,
   ReactiveFormsModule,
   NgxSpinnerModule,

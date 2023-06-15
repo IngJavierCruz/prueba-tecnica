@@ -1,0 +1,24 @@
+<button
+  #nextPaginator
+  *ngIf="showPaginationControls"
+  [disabled]="disableScrollBefore"
+  class="tab-header-pagination tab-header-pagination-before tab-header-pagination-disabled"
+  (click)="handlePaginatorClick('before')">
+  <i class="fa fa-chevron-left"></i>
+</button>
+
+<div class="label-container" #tabListContainer>
+  <div class="tab-labels" #tabList>
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<button
+  #nextPaginator
+  *ngIf="showPaginationControls"
+  [disabled]="disableScrollAfter"
+  class="tab-header-pagination tab-header-pagination-after tab-header-pagination-disabled"
+  (click)="handlePaginatorClick('after')"
+  >
+  <i class="fa fa-chevron-right"></i>
+</button>

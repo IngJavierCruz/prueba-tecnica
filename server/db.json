@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$cysVVkDWIOzWcEXeKIxkwOtHZhQjx7ncp1ZAdJupq1VYoMk6Ya1r2",
+      "name": "test",
+      "lastName": "test",
+      "typeUser": 2,
+      "id": 1
+    }
+  ],
   "dynamicFormControls": [],
   "dynamicForms": [],
   "types_controls": [

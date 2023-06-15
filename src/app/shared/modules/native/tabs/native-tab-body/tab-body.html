@@ -1,0 +1,11 @@
+<div class="tab-body-content"
+  cdkScrollable
+  #content
+  [@translateTab]="{
+    value: _position,
+    params: {animationDuration: animationDuration}
+  }"
+  (@translateTab.start)="onTranslateTabStarted($event)"
+  (@translateTab.done)="translateTabComplete.next($event)">
+  <ng-template nativeTabBodyHost></ng-template>
+</div>

@@ -1,0 +1,31 @@
+<native-tab-header #tabHeader>
+  <!-- LIST NATIVE TAB -->
+  <div *ngFor="let tab of tabs; let i = index" [id]="getTabLabelId(i)" class="tab-label"
+    [class.active]="selectedIndex === i" [ngClass]="tab.labelClass" (click)="changeTab(tab, tabHeader, i)">
+    <ng-container *ngIf="tab.iconLabel">
+      <i [ngClass]="selectedIndex === i ? tab.iconLabelActive: tab.iconLabel"></i>
+    </ng-container>
+    <span class="text">{{tab.textLabel}}</span>
+  </div>
+</native-tab-header>
+
+
+<div class="tab-body-wrapper" #tabBodyWrapper>
+  <native-tab-body
+    role="tabpanel"
+    *ngFor="let tab of tabs; let i = index"
+    [id]="getTabContentId(i)"
+    [attr.tabindex]="(contentTabIndex != null && selectedIndex === i) ? contentTabIndex : null"
+    [attr.aria-labelledby]="getTabLabelId(i)"
+    [class.active]="selectedIndex === i"
+    [ngClass]="tab.bodyClass"
+    [content]="tab.content!"
+    [position]="tab.position!"
+    [preserveContent]="preserveContent"
+  >
+  </native-tab-body>
+</div>
+
+<footer class="tab-paginator">
+  paginador
+</footer>

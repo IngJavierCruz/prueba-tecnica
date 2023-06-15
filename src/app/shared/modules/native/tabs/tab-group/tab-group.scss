@@ -1,0 +1,120 @@
+$background-color: #f2f2f2;
+$tab-color: #f2f2f2;
+$tab-text-color: #535353;
+
+.separator {
+  margin: 2rem 0;
+}
+
+.tab-group {
+  width: 80%;
+  overflow: hidden;
+}
+
+.tab-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  .tab-header-pagination {
+    width: 25px;
+    background-color: white;
+    border: 1px solid white;
+    margin: 0 0.5rem;
+  }
+
+  .label-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+
+.tab-labels {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+
+  & .tab-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 0.3rem;
+    background-color: white;
+    border: 1px solid $tab-color;
+    color: $tab-text-color;
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    transition: color 0.15s ease-in;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+
+    .text { white-space: nowrap;}
+
+    &:hover {
+      background-color: lighten($tab-color, 3%);
+    }
+  }
+
+  & .tab-label.active {
+    font-weight: 500;
+    position: relative;
+    background-color: $tab-color;
+  }
+}
+
+.tab-body-wrapper {
+  background-color: $background-color;
+  // height: 500px;
+  position: relative;
+  overflow: hidden;
+
+  & .tab-body {
+    display: block;
+    overflow: hidden;
+    flex-basis: 100%;
+    outline: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+  }
+
+  & .tab-body.active {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    flex-grow: 1;
+  }
+
+  & .tab-body-content {
+    height: 100%;
+    overflow: auto;
+
+    &[style*='visibility: hidden'] {
+      display: none;
+    }
+  }
+}
+
+// @keyframes slide {
+//   0% { left: -100%; }
+//   50% { left: -50%; }
+//   100% { left: 0; }
+// }
+
+.tab-paginator {
+  color: $tab-text-color;
+  border-radius: 0 0 0.75rem 0.75rem;
+  background-color: $tab-color;
+  padding: 1rem;
+  width: 100%;
+}
