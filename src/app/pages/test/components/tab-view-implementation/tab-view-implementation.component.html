@@ -2,6 +2,15 @@
 <div class="wrapper">
   <native-tab-group (selectedTabChange)="changeTab($event)" *ngIf="true">
     <native-tab
+      *ngFor="let tab of tabs"
+      [textLabel]="tab.textLabel"
+      [iconLabel]="tab.iconLabel"
+      [iconLabelActive]="tab.iconLabelActive"
+    >
+      <h1>Content 1</h1>
+    </native-tab>
+
+    <!-- <native-tab
       [textLabel]="tabs[0].textLabel"
       [iconLabel]="tabs[0].iconLabel"
       [iconLabelActive]="tabs[0].iconLabelActive"
@@ -31,8 +40,8 @@
       <ng-template nativeTabContent>
         <app-list [title]="tabs[2].textLabel" description="body 3">
         </app-list>
-      </ng-template>
-    </native-tab>
+      </ng-template> -->
+    <!-- </native-tab> -->
   </native-tab-group>
 
   <hr />

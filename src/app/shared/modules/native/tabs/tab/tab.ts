@@ -22,7 +22,7 @@ export class NativeTabBase
   @Input() iconLabel: string | undefined = undefined;
   @Input() iconLabelActive: string | undefined = undefined;
   /**
-   * Classes to be passed to the tab label inside the mat-tab-header container.
+   * Classes to be passed to the tab label inside the native-tab-header container.
    * Supports string and string array values, same as `ngClass`.
    */
   @Input() labelClass?: string | string[];

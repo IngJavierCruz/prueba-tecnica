@@ -44,10 +44,11 @@ $tab-text-color: #535353;
     column-gap: 0.3rem;
     background-color: white;
     border: 1px solid $tab-color;
-    color: $tab-text-color;
+    color: lighten($tab-text-color, 25%);
     border-radius: 0.75rem 0.75rem 0 0;
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+    font-weight: 500;
     line-height: 1rem;
     transition: color 0.15s ease-in;
     cursor: pointer;
@@ -73,12 +74,12 @@ $tab-text-color: #535353;
     font-weight: 500;
     position: relative;
     background-color: $tab-color;
+    color: $tab-text-color;
   }
 }
 
 .tab-body-wrapper {
   background-color: $background-color;
-  // height: 500px;
   position: relative;
   overflow: hidden;
 
@@ -111,12 +112,6 @@ $tab-text-color: #535353;
     }
   }
 }
-
-// @keyframes slide {
-//   0% { left: -100%; }
-//   50% { left: -50%; }
-//   100% { left: 0; }
-// }
 
 .tab-paginator {
   color: $tab-text-color;

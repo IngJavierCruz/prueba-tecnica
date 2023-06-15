@@ -108,7 +108,7 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
     if (this._selectedIndex != indexToSelect) {
       const isFirstRun = this._selectedIndex == null;
       if (!isFirstRun) {
-        this.tabHeader.tabList.nativeElement.children[indexToSelect].scrollIntoView({ behavior: "smooth" });
+        this.tabHeader.tabs.toArray()[indexToSelect].elementRef.nativeElement.scrollIntoView({ behavior: "smooth" });
         this.selectedTabChange.emit(this.createChangeEvent(indexToSelect));
         this.selectedIndexChange.emit(indexToSelect);
       }

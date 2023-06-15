@@ -35,7 +35,6 @@ export class NativeTabLabelWrapper  {
 
   constructor(public elementRef: ElementRef<HTMLElement>) {
   }
-
   // selectIndex() {
   //   this.elementRef.nativeElement.scrollIntoView({ behavior: "smooth" });
   // }
@@ -62,7 +61,7 @@ export class NativeTabLabelWrapper  {
   encapsulation: ViewEncapsulation.None,
   host: { 'class': 'tab-header'}
 })
-export class NativeTabHeader extends PaginatedTabHeader implements AfterViewInit {
+export class NativeTabHeader extends PaginatedTabHeader {
   @ContentChildren(NativeTabLabelWrapper, { descendants: false }) tabs!: QueryList<NativeTabLabelWrapper>;
   @ViewChild('tabListContainer', { static: true }) tabListContainer!: ElementRef<HTMLElement>;
   @ViewChild('tabList', { static: true }) tabList!: ElementRef<HTMLElement>;

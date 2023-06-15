@@ -6,13 +6,14 @@ import {
   HostListener,
   AfterViewInit,
   QueryList,
+  AfterContentInit,
 } from '@angular/core';
 
 import { NativeTabLabelWrapper } from '../tab-header/tab-header';
 export type ScrollDirection = 'after' | 'before';
 
 @Directive()
-export abstract class PaginatedTabHeader implements OnInit, AfterViewInit, OnDestroy {
+export abstract class PaginatedTabHeader implements OnInit, AfterContentInit, OnDestroy {
   abstract tabs: QueryList<NativeTabLabelWrapper>;
   abstract tabListContainer: ElementRef<HTMLElement>;
   abstract tabList: ElementRef<HTMLElement>;
@@ -27,7 +28,9 @@ export abstract class PaginatedTabHeader implements OnInit, AfterViewInit, OnDes
 
   ngOnInit() {}
 
-  ngAfterViewInit() {}
+  ngAfterContentInit() {
+    this.checkScrollingControls();
+  }
 
   ngOnDestroy(): void {}
 

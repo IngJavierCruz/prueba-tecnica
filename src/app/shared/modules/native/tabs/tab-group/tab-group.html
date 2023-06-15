@@ -1,7 +1,12 @@
 <native-tab-header #tabHeader>
   <!-- LIST NATIVE TAB -->
-  <div *ngFor="let tab of tabs; let i = index" [id]="getTabLabelId(i)" class="tab-label"
-    [class.active]="selectedIndex === i" [ngClass]="tab.labelClass" (click)="changeTab(tab, tabHeader, i)">
+  <div *ngFor="let tab of tabs; let i = index"
+    nativeTabLabelWrapper
+    [id]="getTabLabelId(i)"
+    class="tab-label"
+    [class.active]="selectedIndex === i"
+    [ngClass]="tab.labelClass"
+    (click)="changeTab(tab, tabHeader, i)">
     <ng-container *ngIf="tab.iconLabel">
       <i [ngClass]="selectedIndex === i ? tab.iconLabelActive: tab.iconLabel"></i>
     </ng-container>
