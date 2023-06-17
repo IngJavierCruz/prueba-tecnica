@@ -1,6 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/ui/ui.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+
 * {
-  box-sizing: border-box;
   font-family: Roboto;
   box-sizing: border-box;
 }
@@ -13,12 +15,13 @@
 html,
 body {
   height: 100%;
+  font-family: Roboto;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: rgb(55, 48, 48);
-  // background-color: white;
+  // background-color: rgb(55, 48, 48);
+  background-color: rgb(255, 255, 255);
 }
 
 ::-ms-reveal {

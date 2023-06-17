@@ -1,0 +1,10 @@
+<nav class="nav">
+  <div class="nav-content">
+    <h1 *ngIf="header.title" class="title">{{header.title}}</h1>
+    <p *ngIf="header.subtitle" class="content">{{header.subtitle}}</p>
+    <ng-content select="[content-before]"></ng-content>
+    <hr class="separator" />
+    <ng-content select="[content-after]"></ng-content>
+  </div>
+</nav>
+

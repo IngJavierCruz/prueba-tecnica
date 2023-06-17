@@ -2,7 +2,7 @@ $color-header:#444444;
 
 .tab-content-header {
   display: grid;
-  grid-template-columns: 65fr 35fr;
+  grid-template-columns: 65fr minmax(120px, 300px);
   column-gap: 40px;
   min-height: 40px;
   align-items: start;
@@ -44,6 +44,5 @@ $color-header:#444444;
   }
 }
 
-.header-right {
-    
-}
+// .header-right {
+// }

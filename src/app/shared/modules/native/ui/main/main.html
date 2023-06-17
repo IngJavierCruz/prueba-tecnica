@@ -1,3 +1,6 @@
-<p>
-  form-field works!
-</p>
+<div [ngClass]="sidebarClass">
+  <ng-content select="[sidebar]"></ng-content>
+</div>
+<div [ngClass]="contentClass" class="ui-main-content">
+  <ng-content select="[content]"></ng-content>
+</div>

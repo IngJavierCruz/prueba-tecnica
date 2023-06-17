@@ -4,11 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 // COMPONENTS
 import { UITabContentHeader } from './tab-content-header/tab-content-header';
 import { UIMain } from './main/main';
-
+import { UISidebar } from './sidebar/sidebar';
+import { UISidebarFilter } from './sidebar-filter/sidebar-filter';
 
 const COMPONENTS = [
   UIMain,
-  UITabContentHeader
+  UITabContentHeader,
+  UISidebar,
+  UISidebarFilter,
 ]
 
 @NgModule({

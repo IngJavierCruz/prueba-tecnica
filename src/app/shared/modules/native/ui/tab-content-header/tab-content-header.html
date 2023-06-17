@@ -11,30 +11,8 @@
         [formControl]="search"
         (keyup.enter)="initSearch()"
         (keyup.esc)="clearSearch()"
-        placeholder="Buscador de recursos">
+        [placeholder]="placeholder">
         <i class="fa-solid fa-magnifying-glass" (click)="initSearch()"></i>
     </div>
-
-    <!-- <input
-      class="native-form-control native-form-control-rounded"
-      type="search"
-      placeholder="Buscador de recursos"> -->
   </div>
-</div>
-
-
-<div class="body">
-  <div class="input-group">
-    <input
-      class="native-form-control"
-      type="search"
-      placeholder="Buscador de recursos">
-  </div>
-
-  <input
-      class="native-form-control native-form-control-search"
-      type="search"
-      disabled
-      placeholder="Buscador de recursos">
-
 </div>

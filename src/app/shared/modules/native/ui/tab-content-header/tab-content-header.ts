@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class UITabContentHeader implements OnInit {
   @Input() title?: string = '';
   @Input() subtitle?: string = '';
+  @Input() placeholder?: string = 'Buscador de recursos';
   @Output() searchChange = new EventEmitter();
   subscription = new Subscription();
   search = new FormControl<string>('');

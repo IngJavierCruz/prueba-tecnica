@@ -1,0 +1,18 @@
+.header-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  & .title {
+    color: #004C98;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -0.32px;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  button {
+    height: 28px;
+  }
+}

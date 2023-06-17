@@ -10,7 +10,6 @@ import { TAB_HEADER_CONTENT } from './CONFIG';
 export class TabViewImplementationComponent implements OnInit {
   title?: string = TAB_HEADER_CONTENT.title;
   subtitle? = TAB_HEADER_CONTENT.subtitle;
-  mostrar = true;
   tabs = [
     {
       textLabel: 'Documentos',
@@ -88,9 +87,6 @@ export class TabViewImplementationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.mostrar = false;
-    }, 1000);
   }
 
   changeTab(tab: NativeTabChangeEvent) {

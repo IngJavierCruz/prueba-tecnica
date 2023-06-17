@@ -1,0 +1,11 @@
+<header class="header-filter">
+  <h5 class="title">Filtrar</h5>
+
+  <button class="btn btn-primary btn-sm"
+    type="button"
+    [disabled]="disabled"
+    (click)="clear.emit()">
+    <i class="fa-solid fa-rotate-right"></i>
+    Limpiar filtro
+  </button>
+</header>

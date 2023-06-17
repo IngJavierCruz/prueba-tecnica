@@ -1,3 +1,147 @@
-<p>
-  digital-resources works!
-</p>
+<ui-main>
+  <ui-sidebar sidebar [header]="header">
+    <ui-sidebar-filter  content-after
+      [disabled]="true"
+      (clear)="clearFilters()">
+    </ui-sidebar-filter>
+  </ui-sidebar>
+
+  <native-tab-group content>
+    <!-- 1 TAB AUDIOS -->
+    <native-tab
+      [textLabel]="tabs[0].textLabel"
+      [iconLabel]="tabs[0].iconLabel"
+      [iconLabelActive]="tabs[0].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[0].title"
+          [subtitle]="tabs[0].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END AUDIOS -->
+
+    <!-- 2 TAB VIDEOS -->
+    <native-tab
+      [textLabel]="tabs[1].textLabel"
+      [iconLabel]="tabs[1].iconLabel"
+      [iconLabelActive]="tabs[1].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[1].title"
+          [subtitle]="tabs[1].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END VIDEOS -->
+
+    <!-- 3 TAB IMPRIMIBLES -->
+    <native-tab
+      [textLabel]="tabs[2].textLabel"
+      [iconLabel]="tabs[2].iconLabel"
+      [iconLabelActive]="tabs[2].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[2].title"
+          [subtitle]="tabs[2].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END IMPRIMIBLES -->
+
+    <!-- 4 TAB INTERACTIVOS -->
+    <native-tab
+      [textLabel]="tabs[3].textLabel"
+      [iconLabel]="tabs[3].iconLabel"
+      [iconLabelActive]="tabs[3].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[3].title"
+          [subtitle]="tabs[3].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END INTERACTIVOS -->
+
+    <!-- 5 TAB LIBROS DE TEXTO -->
+    <native-tab
+      [textLabel]="tabs[4].textLabel"
+      [iconLabel]="tabs[4].iconLabel"
+      [iconLabelActive]="tabs[4].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[4].title"
+          [subtitle]="tabs[4].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END LIBROS DE TEXTO -->
+
+    <!-- 6 TAB GUÍAS DEL PROFESOR -->
+    <native-tab
+      [textLabel]="tabs[5].textLabel"
+      [iconLabel]="tabs[5].iconLabel"
+      [iconLabelActive]="tabs[5].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[5].title"
+          [subtitle]="tabs[5].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END GUÍAS DEL PROFESOR -->
+
+    <!-- 7 TAB LIBROS DE TEXTO DESCARGABLES -->
+    <native-tab
+      [textLabel]="tabs[6].textLabel"
+      [iconLabel]="tabs[6].iconLabel"
+      [iconLabelActive]="tabs[6].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[6].title"
+          [subtitle]="tabs[6].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END LIBROS DE TEXTO DESCARGABLES -->
+
+    <!-- 8 TAB LIBROS EXPORTACIÓN -->
+    <native-tab
+      [textLabel]="tabs[7].textLabel"
+      [iconLabel]="tabs[7].iconLabel"
+      [iconLabelActive]="tabs[7].iconLabelActive"
+    >
+      <ng-template nativeTabContent>
+        <ui-tab-content-header
+          [title]="tabs[7].title"
+          [subtitle]="tabs[7].subtitle"
+          (searchChange)="search($event)">
+        </ui-tab-content-header>
+        <app-audios></app-audios>
+      </ng-template>
+    </native-tab>
+    <!-- END LIBROS EXPORTACIÓN -->
+
+  </native-tab-group>
+</ui-main>

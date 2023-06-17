@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <native-tab-group (selectedTabChange)="changeTab($event)" *ngIf="mostrar">
+  <native-tab-group (selectedTabChange)="changeTab($event)">
     <native-tab
       *ngFor="let tab of tabs"
       [textLabel]="tab.textLabel"
@@ -48,36 +48,4 @@
     <!-- </native-tab> -->
   </native-tab-group>
 
-  <hr />
-  
-  <mat-tab-group *ngIf="false">
-    <mat-tab [label]="tabs[0].textLabel">
-      <ng-template matTabContent>
-      <app-list [title]="tabs[0].textLabel" description="body 1">
-      </app-list>
-      </ng-template>
-    </mat-tab>
-    <mat-tab [label]="tabs[1].textLabel">
-      <ng-template matTabContent>
-      <app-list [title]="tabs[1].textLabel" description="body 2">
-      </app-list>
-      </ng-template>
-    </mat-tab>
-    <mat-tab [label]="tabs[2].textLabel">
-      <ng-template matTabContent>
-      <app-list [title]="tabs[2].textLabel" description="body 3">
-      </app-list>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
-</div>
-
-
-   <!-- <native-tab
-     *ngFor="let tab of tabs"
-      [textLabel]="tab.textLabel"
-      [iconLabel]="tab.iconLabel"
-      [iconLabelActive]="tab.iconLabelActive"
-    >
-      <h1>Content 1</h1>
-    </native-tab> -->
+ 
