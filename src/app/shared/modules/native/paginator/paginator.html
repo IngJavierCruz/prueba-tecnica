@@ -1,0 +1,29 @@
+<!-- <div class="paginator-page-size">
+  <div class="paginator-page-size-label">
+  </div>
+</div> -->
+
+<div class="paginator-range-label">
+  {{intl.getRangeLabel(pageIndex, pageSize, length)}}
+</div>
+
+<div class="paginator-range-actions">
+  <button class="btn btn-outline-primary btn-sm btn-action"
+    type="button"
+    [disabled]="previousButtonsDisabled"
+     (click)="previousPage()">
+    <i class="fas fa-long-arrow-left"></i>
+  </button>
+
+  <div class="paginator-page-current">{{pageIndex}}</div>
+
+  <button class="btn btn-primary btn-sm btn-action btn-action-right"
+     type="button"
+     [disabled]="nextButtonsDisabled"
+     (click)="nextPage()">
+     <span>{{intl.nextPageLabel}}</span>
+     <i class="fas fa-long-arrow-alt-right"></i>
+    </button>
+
+
+</div>

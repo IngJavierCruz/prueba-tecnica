@@ -14,12 +14,7 @@
       [iconLabelActive]="tabs[0].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[0].title"
-          [subtitle]="tabs[0].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[0]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END AUDIOS -->
@@ -31,12 +26,7 @@
       [iconLabelActive]="tabs[1].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[1].title"
-          [subtitle]="tabs[1].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[1]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END VIDEOS -->
@@ -48,12 +38,7 @@
       [iconLabelActive]="tabs[2].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[2].title"
-          [subtitle]="tabs[2].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[2]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END IMPRIMIBLES -->
@@ -65,12 +50,7 @@
       [iconLabelActive]="tabs[3].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[3].title"
-          [subtitle]="tabs[3].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[3]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END INTERACTIVOS -->
@@ -82,12 +62,7 @@
       [iconLabelActive]="tabs[4].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[4].title"
-          [subtitle]="tabs[4].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[4]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END LIBROS DE TEXTO -->
@@ -99,12 +74,7 @@
       [iconLabelActive]="tabs[5].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[5].title"
-          [subtitle]="tabs[5].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[5]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END GUÍAS DEL PROFESOR -->
@@ -116,12 +86,7 @@
       [iconLabelActive]="tabs[6].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[6].title"
-          [subtitle]="tabs[6].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[6]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END LIBROS DE TEXTO DESCARGABLES -->
@@ -133,12 +98,7 @@
       [iconLabelActive]="tabs[7].iconLabelActive"
     >
       <ng-template nativeTabContent>
-        <ui-tab-content-header
-          [title]="tabs[7].title"
-          [subtitle]="tabs[7].subtitle"
-          (searchChange)="search($event)">
-        </ui-tab-content-header>
-        <app-audios></app-audios>
+        <app-audios [tab]="tabs[7]"></app-audios>
       </ng-template>
     </native-tab>
     <!-- END LIBROS EXPORTACIÓN -->

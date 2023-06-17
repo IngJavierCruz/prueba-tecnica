@@ -7,4 +7,4 @@ export interface NativeTabsConfig {
 }
 
 /** Injection token that can be used to provide the default options the tabs module. */
-export const NATIVE_TABS_CONFIG = new InjectionToken<NativeTabsConfig>('MAT_TABS_CONFIG');
+export const NATIVE_TABS_CONFIG = new InjectionToken<NativeTabsConfig>('NATIVE_TABS_CONFIG');

@@ -6,7 +6,7 @@ export const CONTENT_HEADER: ContentHeader = {
   subtitle: 'Para una mejor experiencia, utiliza los siguientes filtros para ubicar los recursos que deseas consultar.',
 }
 
-export const TABS = [
+export const TABS: Tab[] = [
   {
     textLabel: 'Audios',
     iconLabel: 'far fa-volume',
@@ -64,3 +64,11 @@ export const TABS = [
     subtitle: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
 ];
+
+export interface Tab {
+  textLabel: string;
+  iconLabel?: string;
+  iconLabelActive?: string;
+  title?: string;
+  subtitle?: string;
+};

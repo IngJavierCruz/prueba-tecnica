@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Tab } from '../digital-resources';
 
 @Component({
   selector: 'app-audios',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./audios.component.scss']
 })
 export class AudiosComponent implements OnInit {
+  @Input() tab!: Tab;
 
   constructor() { }
 
@@ -13,4 +15,12 @@ export class AudiosComponent implements OnInit {
     console.log('inicializado audios');
   }
 
+  search(value: string) {
+    console.log('busqueda: ', value);
+  }
+
+  clearFilters() {
+    console.log('clear filters');
+  }
+  
 }

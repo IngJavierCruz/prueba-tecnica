@@ -3,11 +3,11 @@ $background-disabled:#e9ecef;
 
 .form-control {
   &:focus {
-    color: $color-form-control;
-    background-color: #ffffff;
-    border-color: #ffffff;
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgba($color-form-control, 0.15);
+    color: $color-form-control !important;
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.1rem rgba($color-form-control, 0.15) !important;
   }
 }
 

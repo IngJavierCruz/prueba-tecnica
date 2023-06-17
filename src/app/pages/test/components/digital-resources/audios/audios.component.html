@@ -1,3 +1,10 @@
-<p>
-  audios works!
-</p>
+<ui-tab-content-body>
+  <ui-tab-content-header
+    [title]="tab.title"
+    [subtitle]="tab.subtitle"
+    (searchChange)="search($event)">
+  </ui-tab-content-header>
+
+  <h3>contenido</h3>
+  <native-paginator></native-paginator>
+</ui-tab-content-body>
