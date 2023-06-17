@@ -74,8 +74,6 @@ export class NativeTabBodyPortal extends CdkPortalOutlet implements OnInit, OnDe
 export abstract class NativeTabBodyBase implements OnInit, OnDestroy {
   /** Current position of the tab-body in the tab-group. Zero means that the tab is visible. */
   private positionIndex!: number;
-  /** Subscription to the directionality change observable. */
-  private dirChangeSubscription = Subscription.EMPTY;
   /** Tab body position state. Used by the animation trigger for the current state. */
   _position!: NativeTabBodyPositionState;
   /** Emits when an animation on the tab is complete. */
@@ -146,7 +144,6 @@ export abstract class NativeTabBodyBase implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.dirChangeSubscription.unsubscribe();
     this.translateTabComplete.complete();
   }
 

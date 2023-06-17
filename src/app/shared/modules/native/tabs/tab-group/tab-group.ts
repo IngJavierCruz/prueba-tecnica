@@ -1,5 +1,6 @@
 import {
   AfterContentChecked,
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
@@ -27,6 +28,7 @@ import {
 import { NativeTabHeader } from '../tab-header/tab-header';
 import { NATIVE_TAB_GROUP, NativeTab } from '../tab/tab';
 import { NATIVE_TABS_CONFIG, NativeTabsConfig } from './tab-config';
+import { startWith } from 'rxjs';
 
 /** Used to generate unique ID's for each tab component */
 let nextId = 0;
@@ -42,12 +44,17 @@ export class NativeTabChangeEvent {
  * @docs-private
  */
 @Directive()
-export abstract class NativeTabGroupBase implements AfterContentChecked, AfterViewInit, OnDestroy {
+export abstract class NativeTabGroupBase implements AfterContentInit, AfterContentChecked, AfterViewInit, OnDestroy {
 
-  /** All of the tabs that belong to the group. */
-  abstract tabs: QueryList<NativeTab>;
+  /**
+   * All tabs inside the tab group. This includes tabs that belong to groups that are nested
+   * inside the current one. We filter out only the tabs that belong to this group in `tabs`.
+   */
+  abstract allTabs: QueryList<NativeTab>;
   abstract tabBodyWrapper: ElementRef;
   abstract tabHeader: NativeTabHeader;
+  /** All of the tabs that belong to the group. */
+  tabs: QueryList<NativeTab> = new QueryList<NativeTab>();
   /** The tab index that should be selected after the content has been checked. */
   private indexToSelect: number = 0;
   /** The index of the active tab. */
@@ -128,8 +135,27 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
   ngAfterViewInit() {
   }
 
+  ngAfterContentInit() {
+    this.subscribeToAllTabChanges();
+  }
+
   ngOnDestroy() {
     this.tabs.destroy();
+  }
+
+  /** Listens to changes in all of the tabs. */
+  private subscribeToAllTabChanges() {
+    // Since we use a query with `descendants: true` to pick up the tabs, we may end up catching
+    // some that are inside of nested tab groups. We filter them out manually by checking that
+    // the closest group to the tab is the current one.
+    this.allTabs.changes.pipe(startWith(this.allTabs)).subscribe((tabs: QueryList<NativeTab>) => {
+      this.tabs.reset(
+        tabs.filter(tab => {
+          return tab._closestTabGroup === this || !tab._closestTabGroup;
+        }),
+      );
+      this.tabs.notifyOnChanges();
+    });
   }
 
   private createChangeEvent(index: number): NativeTabChangeEvent {
@@ -178,7 +204,7 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
   exportAs: 'nativeTabGroup',
 })
 export class NativeTabGroup extends NativeTabGroupBase {
-  @ContentChildren(NativeTab, { descendants: true }) tabs!: QueryList<NativeTab>;
+  @ContentChildren(NativeTab, { descendants: true }) allTabs!: QueryList<NativeTab>;
   @ViewChild('tabHeader') tabHeader!: NativeTabHeader;
   @ViewChild('tabBodyWrapper') tabBodyWrapper!: ElementRef;
 
