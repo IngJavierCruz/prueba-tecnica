@@ -1,4 +1,21 @@
-import { Component, OnInit, ViewEncapsulation, TemplateRef, InjectionToken, Directive, ContentChild, ViewContainerRef, Optional, Inject, Input, ViewChild, OnChanges, OnDestroy, SimpleChanges, AfterViewInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  TemplateRef,
+  InjectionToken,
+  Directive,
+  ContentChild,
+  ViewContainerRef,
+  Optional,
+  Inject,
+  Input,
+  ViewChild,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges
+ } from '@angular/core';
 import { NativeTabLabel, NATIVE_TAB } from '../tab-label/tab-label';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject } from 'rxjs';
@@ -61,6 +78,13 @@ export class NativeTabBase
   ) {
   }
 
+  ngOnInit(): void {
+    this._contentPortal = new TemplatePortal(
+      this._explicitContent || this._implicitContent,
+      this.viewContainerRef,
+    );
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('textLabel') || changes.hasOwnProperty('disabled')) {
       this._stateChanges.next();
@@ -70,28 +94,19 @@ export class NativeTabBase
   ngOnDestroy(): void {
     this._stateChanges.complete();
   }
-
-  ngOnInit(): void {
-    this._contentPortal = new TemplatePortal(
-      this._explicitContent || this._implicitContent,
-      this.viewContainerRef,
-    );
-  }
 }
 
 @Component({
   selector: 'native-tab',
   templateUrl: './tab.html',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Default,
   exportAs: 'nativeTab',
-  // providers: [{provide: NATIVE_TAB, useExisting: NativeTab}],
+  providers: [{provide: NATIVE_TAB, useExisting: NativeTab}],
 })
-export class NativeTab extends NativeTabBase implements AfterViewInit {
+export class NativeTab extends NativeTabBase {
 
   @ContentChild(NativeTabContent, { read: TemplateRef, static: true })
   // We need an initializer here to avoid a TS error. The value will be set in `ngAfterViewInit`.
   override _explicitContent: TemplateRef<any> = undefined!;
-
-  ngAfterViewInit() {
-  }
 }

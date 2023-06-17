@@ -24,7 +24,7 @@ import {
   NumberInput,
 } from '@angular/cdk/coercion';
 
-import { NativeTabHeader, NativeTabLabelWrapper } from '../tab-header/tab-header';
+import { NativeTabHeader } from '../tab-header/tab-header';
 import { NATIVE_TAB_GROUP, NativeTab } from '../tab/tab';
 import { NATIVE_TABS_CONFIG, NativeTabsConfig } from './tab-config';
 
@@ -46,7 +46,7 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
 
   /** All of the tabs that belong to the group. */
   abstract tabs: QueryList<NativeTab>;
-  abstract tabBodyWrapper?: ElementRef;
+  abstract tabBodyWrapper: ElementRef;
   abstract tabHeader: NativeTabHeader;
   /** The tab index that should be selected after the content has been checked. */
   private indexToSelect: number = 0;
@@ -154,7 +154,6 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
   /** Handle click events, setting new selected index if appropriate. */
   changeTab(tab: NativeTab, tabHeader: NativeTabHeader, index: number) {
     this.selectedIndex = index;
-    // tabHeader.tabs.toArray()[index].elementRef.nativeElement.scrollIntoView({behavior: "smooth"});
   }
 
   /** Retrieves the tabindex for the tab. */
@@ -170,18 +169,18 @@ export abstract class NativeTabGroupBase implements AfterContentChecked, AfterVi
   styleUrls: ['./tab-group.scss'],
   encapsulation: ViewEncapsulation.None,
   host: { 'class': 'tab-group' },
-  // providers: [
-  //   {
-  //     provide: NATIVE_TAB_GROUP,
-  //     useExisting: NativeTabGroup,
-  //   },
-  // ],
+  providers: [
+    {
+      provide: NATIVE_TAB_GROUP,
+      useExisting: NativeTabGroup,
+    },
+  ],
   exportAs: 'nativeTabGroup',
 })
-export class NativeTabGroup extends NativeTabGroupBase implements OnInit, AfterViewInit {
+export class NativeTabGroup extends NativeTabGroupBase {
   @ContentChildren(NativeTab, { descendants: true }) tabs!: QueryList<NativeTab>;
   @ViewChild('tabHeader') tabHeader!: NativeTabHeader;
-  @ViewChild('tabBodyWrapper') tabBodyWrapper?: ElementRef;
+  @ViewChild('tabBodyWrapper') tabBodyWrapper!: ElementRef;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -189,7 +188,5 @@ export class NativeTabGroup extends NativeTabGroupBase implements OnInit, AfterV
   ) {
     super(changeDetectorRef, defaultConfig);
   }
-
-  ngOnInit() { }
 }
 

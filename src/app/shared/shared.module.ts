@@ -22,7 +22,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { MaterialModule } from './modules/material.module';
 import { NativeModule } from './modules/native/module';
 
-
 const MODULES = [
   CommonModule,
   FormsModule,

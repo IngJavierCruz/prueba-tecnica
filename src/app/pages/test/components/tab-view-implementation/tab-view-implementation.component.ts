@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NativeTabChangeEvent } from '@shared/modules/native/tabs/tab-group/tab-group';
+import { TAB_HEADER_CONTENT } from './CONFIG';
 
 @Component({
   selector: 'app-tab-view-implementation',
@@ -7,6 +8,9 @@ import { NativeTabChangeEvent } from '@shared/modules/native/tabs/tab-group/tab-
   styleUrls: ['./tab-view-implementation.component.scss']
 })
 export class TabViewImplementationComponent implements OnInit {
+  title?: string = TAB_HEADER_CONTENT.title;
+  subtitle? = TAB_HEADER_CONTENT.subtitle;
+  mostrar = true;
   tabs = [
     {
       textLabel: 'Documentos',
@@ -80,18 +84,21 @@ export class TabViewImplementationComponent implements OnInit {
       textLabel: 'label 3 fin',
     }
   ];
+
   constructor() { }
 
   ngOnInit() {
     setTimeout(() => {
-      this.tabs.push({
-        textLabel: 'label 3 nuevo fin',
-      })
-    }, 5000);
+      this.mostrar = false;
+    }, 1000);
   }
 
   changeTab(tab: NativeTabChangeEvent) {
     // console.log("change tab", tab);
+  }
+
+  search(value: string) {
+    console.log('busqueda: ', value);
   }
 
 }

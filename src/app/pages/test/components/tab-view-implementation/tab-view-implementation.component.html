@@ -1,13 +1,17 @@
-<h1>tab-group view implementation</h1>
 <div class="wrapper">
-  <native-tab-group (selectedTabChange)="changeTab($event)" *ngIf="true">
+  <native-tab-group (selectedTabChange)="changeTab($event)" *ngIf="mostrar">
     <native-tab
       *ngFor="let tab of tabs"
       [textLabel]="tab.textLabel"
       [iconLabel]="tab.iconLabel"
       [iconLabelActive]="tab.iconLabelActive"
     >
-      <h1>Content 1</h1>
+    <ui-tab-content-header
+      [title]="title"
+      [subtitle]="subtitle"
+      (searchChange)="search($event)">
+    </ui-tab-content-header>
+    <h3>Hla</h3>
     </native-tab>
 
     <!-- <native-tab

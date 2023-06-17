@@ -1,0 +1,77 @@
+$color-form-control:#444444;
+$background-disabled:#e9ecef;
+
+.form-control {
+  &:focus {
+    color: $input-focus-color;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgba($color-form-control, 0.15);
+  }
+}
+
+
+
+// FORM SEARCH
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  i {
+    position: absolute;
+    right: 7.5px;
+    height: 18px;
+    width: 18px;
+    top: 11px;
+    color: $color-form-control;
+    cursor: pointer;
+  }
+}
+
+.form-control-search {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: $color-form-control;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 19px;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  padding: 9px 30px 9px 15px;
+
+  &:disabled {
+    background-color: $background-disabled;
+    opacity: 0.7;
+    border-color: rgba($color-form-control, 0.3);
+  }
+
+  &::placeholder {
+    font-size: 15px;
+    padding-right: 30px;
+    color: ligthen($color-form-control, 10%);
+  }
+}
+
+
+input[type="search"].form-control-search::-webkit-search-decoration,
+input[type="search"].form-control-search::-webkit-search-cancel-button,
+input[type="search"].form-control-search::-webkit-search-results-button,
+input[type="search"].form-control-search::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// END FORM SEARCH
+
+
+
+.body {
+  width: 100%;
+  height: 200px;
+  padding: 1rem;
+  background-color: white;
+}

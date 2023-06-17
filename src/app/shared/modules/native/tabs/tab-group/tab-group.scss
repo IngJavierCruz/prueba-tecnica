@@ -1,13 +1,11 @@
 $background-color: #f2f2f2;
 $tab-color: #f2f2f2;
-$tab-text-color: #535353;
-
-.separator {
-  margin: 2rem 0;
-}
+$tab-text-color: #444444;
 
 .tab-group {
-  width: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -44,21 +42,21 @@ $tab-text-color: #535353;
     column-gap: 0.3rem;
     background-color: white;
     border: 1px solid $tab-color;
-    color: lighten($tab-text-color, 25%);
-    border-radius: 0.75rem 0.75rem 0 0;
+    color: $tab-text-color;
+    border-radius: 17px 17px 0 0;
     padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    line-height: 1rem;
+    font-size: 0.75rem;
+    line-height: 14px;
     transition: color 0.15s ease-in;
     cursor: pointer;
     user-select: none;
     z-index: 2;
+    letter-spacing: -0.16px;
 
     & i {
-      width: 1rem;
-      height: 1rem;
-      line-height: 1rem;
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
     }
 
     & .text {
@@ -71,10 +69,10 @@ $tab-text-color: #535353;
   }
 
   & .tab-label.active {
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.75rem;
     position: relative;
     background-color: $tab-color;
-    color: $tab-text-color;
   }
 }
 
@@ -106,6 +104,7 @@ $tab-text-color: #535353;
   & .tab-body-content {
     height: 100%;
     overflow: auto;
+    padding: 20px;
 
     &[style*="visibility: hidden"] {
       display: none;

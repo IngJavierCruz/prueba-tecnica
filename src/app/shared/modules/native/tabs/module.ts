@@ -4,7 +4,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { A11yModule } from '@angular/cdk/a11y';
 // COMPONENTS
 import { NativeTab } from './tab/tab';
-import { NativeTabBody, NativeTabBodyPortal } from './native-tab-body/tab-body';
+import { NativeTabBody, NativeTabBodyPortal } from './tab-body/tab-body';
 import { NativeTabContent } from './tab-content/tab-content';
 import { NativeTabHeader, NativeTabLabelWrapper } from './tab-header/tab-header';
 import { NativeTabGroup } from './tab-group/tab-group';

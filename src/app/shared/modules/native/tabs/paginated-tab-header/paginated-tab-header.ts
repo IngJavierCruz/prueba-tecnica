@@ -32,7 +32,8 @@ export abstract class PaginatedTabHeader implements OnInit, AfterContentInit, On
     this.checkScrollingControls();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+  }
 
   @HostListener('window:resize')
   onWindowResize() {
