@@ -1,6 +1,3 @@
-$tab-color: #f2f2f2;
-$tab-text-color: #444444;
-
 .tab-group {
   width: 100%;
   display: flex;
@@ -43,8 +40,7 @@ $tab-text-color: #444444;
     align-items: center;
     column-gap: 0.3rem;
     background-color: white;
-    border: 1px solid $tab-color;
-    color: $tab-text-color;
+    border: 1px solid var(--tab-color);
     border-radius: 17px 17px 0 0;
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
@@ -66,7 +62,7 @@ $tab-text-color: #444444;
     }
 
     &:hover {
-      background-color: lighten($tab-color, 3%);
+      background-color: var(--tab-hover);
     }
   }
 
@@ -74,7 +70,7 @@ $tab-text-color: #444444;
     font-weight: 600;
     font-size: 0.75rem;
     position: relative;
-    background-color: $tab-color;
+    background-color: var(--tab-color);
   }
 }
 

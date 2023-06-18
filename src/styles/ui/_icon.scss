@@ -1,0 +1,32 @@
+// scss-docs-start space for icon for prefix & suffix
+.prefix {
+  padding-left: 30px !important;
+}
+
+.suffix {
+  padding-right: 30px !important;
+}
+// scss-docs-end space for icon for prefix & suffix
+
+// scss-docs-start icon prefix & icon suffix for all elements
+.icon-prefix,
+.icon-suffix {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 1;
+  position: absolute;
+  color: var(--control-label-color);
+  height: 18px;
+  width: 18px;
+}
+
+.icon-prefix {
+  left: 7.5px;
+}
+
+.icon-suffix {
+  right: 7.5px;
+}
+// scss-docs-end icon prefix & icon suffix for all elements

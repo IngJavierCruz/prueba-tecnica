@@ -9,10 +9,10 @@
 // END SUFIX AND PREFIX BUTTONS
 
 
-.btn:disabled {
-  background-color: #f2f2f2 !important;
-  border-color: #f2f2f2 !important;
-  color: #a9a9a9 !important;
+button.btn:disabled {
+  background-color: #f2f2f2;
+  border-color: #f2f2f2;
+  color: #a9a9a9;
 }
 
 .btn-sm {

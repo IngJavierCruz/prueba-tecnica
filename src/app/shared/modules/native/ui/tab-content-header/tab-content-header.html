@@ -4,15 +4,15 @@
     <p class="subtitle" *ngIf="subtitle">{{subtitle}}</p>
   </div>
   <div class="header-right">
-    <div class="search">
+    <div class="wrapper-form-control">
       <input
-        class="form-control form-control-search"
+        class="form-control form-control-search suffix"
         type="search"
         [formControl]="search"
         (keyup.enter)="initSearch()"
         (keyup.esc)="clearSearch()"
         [placeholder]="placeholder">
-        <i class="fa-solid fa-magnifying-glass" (click)="initSearch()"></i>
+      <i class="far fa-search icon-suffix" (click)="initSearch()"></i>
     </div>
   </div>
 </div>

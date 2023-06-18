@@ -1,69 +1,71 @@
-$color-form-control:#444444;
-$background-disabled:#e9ecef;
+// scss-docs-start wrapper form-control & form-select
+.wrapper-form-select,
+.wrapper-form-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100%;
+  padding-bottom: 20px;
+}
+// scss-docs-start wrapper form-control & form-select
 
-.form-control {
+// scss-docs-start form-control & form-select
+.form-control,
+.form-select {
+  color: var(--control-label-color) !important;
   &:focus {
-    color: $color-form-control !important;
+    color: var(--control-label-label) !important;
     background-color: #ffffff !important;
     border-color: #ffffff !important;
     outline: 0 !important;
-    box-shadow: 0 0 0 0.1rem rgba($color-form-control, 0.15) !important;
+    box-shadow: 0 0 0 0.1rem rgba(var(--control-shadow), 0.15) !important;
   }
-}
-
-
-
-// FORM SEARCH
-.search {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 36px;
-  i {
-    position: absolute;
-    right: 7.5px;
-    height: 18px;
-    width: 18px;
-    top: 11px;
-    color: $color-form-control;
-    cursor: pointer;
-  }
-}
-
-.form-control-search {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  color: $color-form-control;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 19px;
-  font-size: 15px;
-  letter-spacing: -0.2px;
-  padding: 9px 30px 9px 15px;
 
   &:disabled {
-    background-color: $background-disabled;
+    background-color: #e9ecef;
     opacity: 0.7;
-    border-color: rgba($color-form-control, 0.3);
-  }
-
-  &::placeholder {
-    font-size: 15px;
-    padding-right: 30px;
-    color: ligthen($color-form-control, 10%);
+    border-color: var(--control-disabled);
   }
 }
+// scss-docs-start form-control & form-select
 
+// scss-docs-start form-label
+.form-label {
+  line-height: 18px;
+  letter-spacing: -0.2px;
+}
+// scss-docs-end form-label
 
+// scss-docs-start reset search controls
 input[type="search"].form-control-search::-webkit-search-decoration,
 input[type="search"].form-control-search::-webkit-search-cancel-button,
 input[type="search"].form-control-search::-webkit-search-results-button,
 input[type="search"].form-control-search::-webkit-search-results-decoration {
-  -webkit-appearance:none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
+// scss-docs-end reset search controls
 
-// END FORM SEARCH
+// scss-docs-start icon prefix & icon suffix for form-control & form-select
+.form-control,
+.form-select {
+  & ~.icon-prefix,
+  & ~.icon-suffix {
+    top: 12px;
+  }
+}
+// scss-docs-start icon prefix & icon suffix for form-control & form-select
 
+
+.invalid,
+.valid {
+  position: absolute;
+  width: 100%;
+  font-size: 11px;
+  bottom: 2px;
+}
+
+.invalid { color: #dc3545; }
+.valid { color: #198754 ;}

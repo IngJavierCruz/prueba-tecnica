@@ -1,0 +1,31 @@
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxll: 1520px,
+);
+
+// Source mixin
+@mixin make-container() {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxll: 1520px,
+);
+
+
+// Usage
+.container-xxll {
+  padding: 0 !important;
+  max-width: map-get($container-max-widths, xxll);
+}

@@ -1,13 +1,12 @@
-$height-header: 60px;
-
 .ui-main {
   display: flex;
   flex: 1 1 auto;
-  padding: 40px 0;
+  padding: var(--ui-main-padding-y) 0;
   background-color: #ffff;
-  height: calc(100vh - $height-header);
+  height: calc(100vh - var(--height-header));
 }
 
 .ui-main-content {
   padding-right: 20px;
+  flex: 1 1 auto;
 }

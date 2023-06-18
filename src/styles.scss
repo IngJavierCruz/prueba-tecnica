@@ -1,16 +1,20 @@
-@import './styles/ui/ui.scss';
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
-
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "./styles/ui/ui.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 * {
   font-family: Roboto;
   box-sizing: border-box;
 }
 
-*, *:active, *:hover, *:focus  {
-  outline: none!important;
+*,
+*:active,
+*:hover,
+*:focus {
+  outline: none !important;
 }
-
 
 html,
 body {

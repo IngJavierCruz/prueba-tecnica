@@ -1,0 +1,65 @@
+/* redefine theme colors for ra theme */
+:root.theme-ra {
+  $primary: rgb(152, 0, 0);
+  $body-color: rgb(153, 153, 153);
+  $body-bg: rgb(152, 0, 0);
+
+  $theme: (
+    "primary": $primary,
+  );
+
+  $theme-colors: map-merge($theme-colors, $theme);
+  /* redefine theme color variables */
+  @each $color, $value in $theme-colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+
+  @each $color, $value in $theme-colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
+  // scss-docs-start btn-variant-loops
+  @each $color, $value in $theme-colors {
+    .btn-#{$color} {
+      @if $color == "light" {
+        @include button-variant(
+          $value,
+          $value,
+          $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
+          $hover-border: shade-color($value, $btn-hover-border-shade-amount),
+          $active-background: shade-color($value, $btn-active-bg-shade-amount),
+          $active-border: shade-color($value, $btn-active-border-shade-amount)
+        );
+      } @else if $color == "dark" {
+        @include button-variant(
+          $value,
+          $value,
+          $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
+          $hover-border: tint-color($value, $btn-hover-border-tint-amount),
+          $active-background: tint-color($value, $btn-active-bg-tint-amount),
+          $active-border: tint-color($value, $btn-active-border-tint-amount)
+        );
+      } @else {
+        @include button-variant($value, $value);
+      }
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    .btn-outline-#{$color} {
+      @include button-outline-variant($value);
+    }
+  }
+  // scss-docs-end btn-variant-loops
+
+  --#{$prefix}body-color: #{$body-color};
+  --#{$prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+
+  // COLORS COMPONENTS
+  // scss-docs-start sidebar
+  --sidebar-color: #2416e0;
+  // scss-docs-end sidebar
+}

@@ -1,0 +1,29 @@
+$prefix: app-;
+
+:root {
+  // scss-docs-start focus, active
+  --control-label-color: #444444;
+  --control-shadow: 68, 68, 68;
+  --control-disabled: #fafafa;
+  // scss-docs-end focus, active
+
+  // COMPONENTS
+  // scss-docs-start tab-group
+  --tab-color: #f2f2f2;
+  --tab-hover: #fafafa;
+  // scss-docs-end tab-group
+
+  // scss-docs-start header-main
+  --height-header: 60px;
+  // scss-docs-end header-main
+
+  // scss-docs-start ui-main
+  --ui-main-padding-top: 20px;
+  --ui-main-padding-bottom: 20px;
+  --ui-main-padding-y: calc(var(--ui-main-padding-top) + var(--ui-main-padding-bottom));
+  // scss-docs-end ui-main
+
+  // scss-docs-start ui-sidebar-nav-content
+  --ui-sidebar-nav-content-height: calc(100vh - var(--height-header) - var(--ui-main-padding-y));
+  // scss-docs-end ui-sidebar-nav-content
+}

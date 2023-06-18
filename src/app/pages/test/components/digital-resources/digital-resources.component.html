@@ -1,9 +1,56 @@
 <ui-main>
   <ui-sidebar sidebar [header]="header">
-    <ui-sidebar-filter  content-after
-      [disabled]="true"
+    <ui-sidebar-filter content-after
+      [disabled]="false"
       (clear)="clearFilters()">
+
+      <form class="form">
+        <div class="wrapper-form-control">
+          <label for="level" class="form-label prefix">
+            <i class="far fa-sliders-h icon-prefix"></i>
+            Nivel
+          </label>
+
+          <select class="form-select">
+            <option selected disabled>-Selecciona-</option>
+            <option value="1">O as sadasda aasda das sad</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="wrapper-form-select">
+          <label for="level" class="form-label prefix">
+            <i class="far fa-layer-group icon-prefix"></i>
+            Grado
+          </label>
+          <select class="form-select" required>
+            <option selected disabled>-Selecciona-</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <div class="wrapper-form-select">
+          <label for="level" class="form-label prefix">
+            <i class="far fa-folder-open icon-prefix"></i>
+            Asignatura
+          </label>
+          <select class="form-select">
+            <option selected disabled>-Selecciona-</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+
+        <button></button>
+    </form>
+
     </ui-sidebar-filter>
+
+
   </ui-sidebar>
 
   <native-tab-group content>
