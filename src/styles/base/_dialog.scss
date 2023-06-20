@@ -1,0 +1,10 @@
+.ui-backdropClass {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.ui-panelClass {
+  & .mdc-dialog__surface {
+    box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.5) !important;
+    border-radius: 20px !important;
+  }
+}

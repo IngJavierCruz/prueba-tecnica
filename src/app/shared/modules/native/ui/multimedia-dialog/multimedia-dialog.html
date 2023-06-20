@@ -1,0 +1,73 @@
+
+<i class="far fa-times close" (click)="closeDialog()"></i>
+
+<header class="ui-header-multimedia"  mat-dialog-title>
+  <i *ngIf="multimedia.iconLabel" [ngClass]="multimedia.iconLabel"></i>
+    <h1 *ngIf="multimedia.title" class="title">
+      {{multimedia.title}}
+    </h1>
+    <p *ngIf="multimedia.title" class="subtitle">
+      {{multimedia.subtitle}}
+    </p>
+</header>
+
+<mat-dialog-content class="dialog-content">
+  <div class="ui-paragraphs-multimedia"
+    *ngFor="let item of multimedia.sections">
+    <h2 class="title">{{item.title}}</h2>
+    <p class="subtitle">{{item.subtitle}}</p>
+  </div>
+
+  <!-- MULTIMEDIAS POR TIPO-->
+  <section class="ui-section-multimedia">
+
+    <div class="audio" *ngIf="showAudio()">
+      <audio controls controlsList="nodownload noplaybackrate">
+        <source src="http://www.tutorialesprogramacionya.com/audios/gallo.ogg">
+        <source src="http://www.tutorialesprogramacionya.com/audios/gallo.mp3">
+        <source src="http://www.tutorialesprogramacionya.com/audios/gallo.wav">
+      </audio>
+    </div>
+
+    <div class="document" *ngIf="showDocument()">
+      <ng2-pdfjs-viewer
+        class="pdf"
+        pdfSrc="https://ra-prod.azurewebsites.net/api/contents/4992/download"
+        viewerId="1"
+        [download]="false"
+        [openFile]="false"
+        [print]="false"
+        [viewBookmark]="false"
+        locale="es-MX"
+        [showSpinner]="true">
+      </ng2-pdfjs-viewer>
+    </div>
+
+    <div class="video" *ngIf="showVideo()">
+      <!-- width="1904"
+      height="760" -->
+      <!-- <iframe src="https://player.vimeo.com/video/252920634" -->
+    <iframe src="https://www.youtube.com/embed/w_rJizvJ9oY"
+      class="iframe"
+      title="Descubre 5 novedades imperdibles de Angular v16"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+
+      <!-- <video src="https://player.vimeo.com/video/252920634">
+        Tu navegador no admite el elemento <code>video</code>.
+      </video> -->
+    </div>
+  </section>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="btn-actions" *ngIf="multimedia.showButtonDownload">
+  <button class="btn btn-primary btn-lg rounded-pill download"
+    type="button"
+    (click)="initTransaction()">
+    {{multimedia.labelButtonDownload}}
+    <i class="fas fa-download"></i>
+  </button>
+</mat-dialog-actions>
+

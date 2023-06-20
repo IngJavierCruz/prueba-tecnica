@@ -32,6 +32,11 @@
                 "glob": "**/*.svg",
                 "input": "src/assets/icons",
                 "output": "/icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/ng2-pdfjs-viewer/pdfjs",
+                "output": "/assets/pdfjs"
               }
             ],
             "styles": [

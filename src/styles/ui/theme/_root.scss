@@ -1,9 +1,12 @@
 $prefix: app-;
 
 :root {
+  // scss-docs-start text color
+  --text-color: #444444;
+  // scss-docs-end
+
   // scss-docs-start label table
   --table-text-color: #444444;
-
   // scss-docs-end
 
   // scss-docs-start focus, active
