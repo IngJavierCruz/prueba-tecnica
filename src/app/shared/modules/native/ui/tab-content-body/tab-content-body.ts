@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'ui-tab-content-body',
   templateUrl: './tab-content-body.html',
   encapsulation: ViewEncapsulation.None,
-  host: { 'class': 'content-body' },
+  inputs: ['rounded'],
+  host: {
+    'class': 'content-body',
+    '[class.content-body-rounded]': 'rounded'
+  },
   styleUrls: ['./tab-content-body.scss']
 })
-export class UITabContentBody implements OnInit {
+export class UITabContentBody {
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

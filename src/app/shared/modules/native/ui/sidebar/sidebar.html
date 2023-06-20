@@ -1,10 +1,9 @@
-<nav class="nav">
+<nav class="ui-sidebar-main">
   <div class="nav-content">
-    <h1 *ngIf="header.title" class="title">{{header.title}}</h1>
-    <p *ngIf="header.subtitle" class="subtitle">{{header.subtitle}}</p>
-    <ng-content select="[content-before]"></ng-content>
+    <ng-content select="[sidebar-header]"></ng-content>
+    <!-- <ng-content select="[sidebar-before]"></ng-content> -->
     <hr class="separator" />
-    <ng-content select="[content-after]"></ng-content>
+    <ng-content select="[sidebar-content]"></ng-content>
   </div>
 </nav>
 

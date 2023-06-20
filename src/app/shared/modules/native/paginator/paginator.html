@@ -8,7 +8,7 @@
 </div>
 
 <div class="paginator-range-actions">
-  <button class="btn btn-outline-primary btn-sm btn-action"
+  <button class="btn btn-outline-primary"
     type="button"
     [disabled]="previousButtonsDisabled"
      (click)="previousPage()">
@@ -17,11 +17,11 @@
 
   <div class="paginator-page-current">{{pageIndex}}</div>
 
-  <button class="btn btn-primary btn-sm btn-action btn-action-right"
+  <button class="btn btn-primary"
      type="button"
      [disabled]="nextButtonsDisabled"
      (click)="nextPage()">
-     <span>{{intl.nextPageLabel}}</span>
+      {{intl.nextPageLabel}}
      <i class="fas fa-long-arrow-alt-right"></i>
     </button>
 

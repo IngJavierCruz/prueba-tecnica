@@ -77,6 +77,8 @@
 .tab-body-wrapper {
   position: relative;
   overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 0 17px 17px 17px;
 
   & .tab-body {
     display: block;
@@ -88,6 +90,8 @@
     right: 0;
     bottom: 0;
     position: absolute;
+    background-color: #f2f2f2;
+
   }
 
   & .tab-body.active {

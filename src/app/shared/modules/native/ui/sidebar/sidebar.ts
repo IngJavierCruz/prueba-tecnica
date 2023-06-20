@@ -1,17 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ContentHeader } from '@app/pages/test/models/ContentHeader';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'ui-sidebar',
   templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.scss']
+  styleUrls: ['./sidebar.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class UISidebar implements OnInit {
-  @Input() header!: ContentHeader;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class UISidebar  {
 }

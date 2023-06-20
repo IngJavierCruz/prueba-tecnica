@@ -1,6 +1,11 @@
 $prefix: app-;
 
 :root {
+  // scss-docs-start label table
+  --table-text-color: #444444;
+
+  // scss-docs-end
+
   // scss-docs-start focus, active
   --control-label-color: #444444;
   --control-shadow: 68, 68, 68;
@@ -18,12 +23,23 @@ $prefix: app-;
   // scss-docs-end header-main
 
   // scss-docs-start ui-main
-  --ui-main-padding-top: 20px;
-  --ui-main-padding-bottom: 20px;
-  --ui-main-padding-y: calc(var(--ui-main-padding-top) + var(--ui-main-padding-bottom));
+  --ui-main-padding-x: 0;
+  --ui-main-padding-y: 40px;
+  --ui-main-padding-t-b: calc(var(--ui-main-padding-y) + var(--ui-main-padding-y));
   // scss-docs-end ui-main
 
   // scss-docs-start ui-sidebar-nav-content
-  --ui-sidebar-nav-content-height: calc(100vh - var(--height-header) - var(--ui-main-padding-y));
+  --ui-sidebar-nav-content-height: calc(100vh - var(--height-header) - var(--ui-main-padding-t-b));
+  // scss-docs-end ui-sidebar-nav-content
+
+  // scss-docs-start ui-sidebar-nav-content
+  --ui-tab-header-height: 30px;
+  // scss-docs-end ui-sidebar-nav-content
+
+  // scss-docs-start ui-sidebar-nav-content
+  // --ui-tab-content-body-padding-top: 20px;
+  // --ui-tab-content-body-padding-bottom: 20px;
+  // --ui-tab-content-body-padding-y: calc(var(--ui-tab-content-body-padding-top) + var(--ui-tab-content-body-padding-bottom));
+  --ui-tab-content-body-height: calc(var(--ui-sidebar-nav-content-height) - var(--ui-tab-header-height));
   // scss-docs-end ui-sidebar-nav-content
 }

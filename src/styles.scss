@@ -1,13 +1,15 @@
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
-@import "./styles/ui/ui.scss";
+@import "./styles/ui";
+@import "./styles/base";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 * {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
+
 
 *,
 *:active,
@@ -45,3 +47,4 @@ body {
 .mdc-text-field--filled {
   background-color: #fff !important;
 }
+

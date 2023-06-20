@@ -1,7 +1,13 @@
 .content-body {
   padding: 20px;
-  display: flex;
-  flex-direction: column;
   border-radius: 0 17px 17px 17px;
   background-color: #f2f2f2;
+  row-gap: 22px;
+  height: var(--ui-tab-content-body-height);
+  max-height: var(--ui-tab-content-body-height);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  &.content-body-rounded {
+    border-radius: 17px;
+  }
 }

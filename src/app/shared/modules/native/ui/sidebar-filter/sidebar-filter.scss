@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 10px;
-  & .title {
+  & > .title {
     color: var(--app-primary);
     font-size: 24px;
     font-weight: bold;

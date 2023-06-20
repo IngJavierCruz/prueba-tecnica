@@ -1,9 +1,15 @@
 <ui-main>
-  <ui-sidebar sidebar [header]="header">
-    <ui-sidebar-filter content-after
-      [disabled]="false"
-      (clear)="clearFilters()">
+  <ui-sidebar sidebar>
+    <ng-container sidebar-header>
+      <h1 class="title">{{header.title}}</h1>
+      <p class="subtitle">{{header.subtitle}}</p>
+      <button class="btn btn-primary rounded-pill btn-lg btn-action" type="button">
+        <i class="fas fa-plus btn-prefix"></i>
+        Agregar nuevo archivo
+      </button>
+    </ng-container>
 
+    <ui-sidebar-filter sidebar-content [disabled]="false" (clear)="clearFilters()">
       <form class="form">
         <div class="wrapper-form-control">
           <label for="level" class="form-label prefix">
@@ -44,22 +50,14 @@
             <option value="3">Three</option>
           </select>
         </div>
-
-        <button></button>
-    </form>
-
+      </form>
     </ui-sidebar-filter>
-
-
   </ui-sidebar>
 
   <native-tab-group content>
     <!-- 1 TAB AUDIOS -->
-    <native-tab
-      [textLabel]="tabs[0].textLabel"
-      [iconLabel]="tabs[0].iconLabel"
-      [iconLabelActive]="tabs[0].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[0].textLabel" [iconLabel]="tabs[0].iconLabel"
+      [iconLabelActive]="tabs[0].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[0]"></app-audios>
       </ng-template>
@@ -67,11 +65,8 @@
     <!-- END AUDIOS -->
 
     <!-- 2 TAB VIDEOS -->
-    <native-tab
-      [textLabel]="tabs[1].textLabel"
-      [iconLabel]="tabs[1].iconLabel"
-      [iconLabelActive]="tabs[1].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[1].textLabel" [iconLabel]="tabs[1].iconLabel"
+      [iconLabelActive]="tabs[1].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[1]"></app-audios>
       </ng-template>
@@ -79,11 +74,8 @@
     <!-- END VIDEOS -->
 
     <!-- 3 TAB IMPRIMIBLES -->
-    <native-tab
-      [textLabel]="tabs[2].textLabel"
-      [iconLabel]="tabs[2].iconLabel"
-      [iconLabelActive]="tabs[2].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[2].textLabel" [iconLabel]="tabs[2].iconLabel"
+      [iconLabelActive]="tabs[2].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[2]"></app-audios>
       </ng-template>
@@ -91,11 +83,8 @@
     <!-- END IMPRIMIBLES -->
 
     <!-- 4 TAB INTERACTIVOS -->
-    <native-tab
-      [textLabel]="tabs[3].textLabel"
-      [iconLabel]="tabs[3].iconLabel"
-      [iconLabelActive]="tabs[3].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[3].textLabel" [iconLabel]="tabs[3].iconLabel"
+      [iconLabelActive]="tabs[3].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[3]"></app-audios>
       </ng-template>
@@ -103,11 +92,8 @@
     <!-- END INTERACTIVOS -->
 
     <!-- 5 TAB LIBROS DE TEXTO -->
-    <native-tab
-      [textLabel]="tabs[4].textLabel"
-      [iconLabel]="tabs[4].iconLabel"
-      [iconLabelActive]="tabs[4].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[4].textLabel" [iconLabel]="tabs[4].iconLabel"
+      [iconLabelActive]="tabs[4].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[4]"></app-audios>
       </ng-template>
@@ -115,11 +101,8 @@
     <!-- END LIBROS DE TEXTO -->
 
     <!-- 6 TAB GUÍAS DEL PROFESOR -->
-    <native-tab
-      [textLabel]="tabs[5].textLabel"
-      [iconLabel]="tabs[5].iconLabel"
-      [iconLabelActive]="tabs[5].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[5].textLabel" [iconLabel]="tabs[5].iconLabel"
+      [iconLabelActive]="tabs[5].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[5]"></app-audios>
       </ng-template>
@@ -127,11 +110,8 @@
     <!-- END GUÍAS DEL PROFESOR -->
 
     <!-- 7 TAB LIBROS DE TEXTO DESCARGABLES -->
-    <native-tab
-      [textLabel]="tabs[6].textLabel"
-      [iconLabel]="tabs[6].iconLabel"
-      [iconLabelActive]="tabs[6].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[6].textLabel" [iconLabel]="tabs[6].iconLabel"
+      [iconLabelActive]="tabs[6].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[6]"></app-audios>
       </ng-template>
@@ -139,11 +119,8 @@
     <!-- END LIBROS DE TEXTO DESCARGABLES -->
 
     <!-- 8 TAB LIBROS EXPORTACIÓN -->
-    <native-tab
-      [textLabel]="tabs[7].textLabel"
-      [iconLabel]="tabs[7].iconLabel"
-      [iconLabelActive]="tabs[7].iconLabelActive"
-    >
+    <native-tab [textLabel]="tabs[7].textLabel" [iconLabel]="tabs[7].iconLabel"
+      [iconLabelActive]="tabs[7].iconLabelActive">
       <ng-template nativeTabContent>
         <app-audios [tab]="tabs[7]"></app-audios>
       </ng-template>

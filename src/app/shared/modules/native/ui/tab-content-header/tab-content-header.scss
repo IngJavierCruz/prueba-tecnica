@@ -19,12 +19,6 @@
     font-weight: bold;
     letter-spacing: 0;
     line-height: 35px;
-    display: grid;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    margin-bottom: 20px;
   }
 
   & .subtitle {
@@ -33,11 +27,6 @@
     font-size: 15px;
     letter-spacing: -0.2px;
     line-height: 18px;
-    display: grid;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
   }
 }
 

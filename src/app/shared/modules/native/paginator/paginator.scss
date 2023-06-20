@@ -19,20 +19,9 @@
   align-items: center;
   column-gap: 10px;
 
-  & .btn-action {
-    & i {
-      height: 18px;
-      width: 16px;
-    }
-
+  & .btn {
     &:disabled {
       border-color: #A9A9A9;
-    }
-  }
-
-  & .btn-action.btn-action-right {
-    & i {
-      margin-left: 5px;
     }
   }
 
