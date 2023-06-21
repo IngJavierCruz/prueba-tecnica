@@ -1,0 +1,42 @@
+.ui-header {
+  height: 60px;
+  background-color: var(--app-body-bg);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 20px;
+  column-gap: 30px;
+}
+
+.ui-header-toggle {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & i {
+    font-size: 22px;
+    font-weight: 300;
+  }
+}
+
+.ui-header-logo {
+  display: flex;
+  height: 30px;
+}
+
+.ui-header-user {
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--app-primary);
+  margin-left: auto;
+
+  & i {
+    font-size: 14px;
+  }
+}
