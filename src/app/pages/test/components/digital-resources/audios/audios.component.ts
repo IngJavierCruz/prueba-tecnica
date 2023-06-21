@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UIMultimediaDialog } from '@shared/modules/native/ui/multimedia-dialog/multimedia-dialog';
 import { Multimedia } from '@app/pages/test/models/Multimedia';
 import { DATA } from './audios';
+import { FilterDigitalResource } from '@app/pages/test/models/FilterDigitalResource';
 
 
 @Component({
@@ -12,18 +13,27 @@ import { DATA } from './audios';
   styleUrls: ['./audios.component.scss'],
 })
 export class AudiosComponent implements OnInit {
-  @Input() tab!: Tab;
+  @Input()
+  tab!: Tab;
+  private filterActive: FilterDigitalResource = {search: ''};
+  @Input()
+  get filters() { return this.filterActive; }
+  set filters(value: FilterDigitalResource) {
+    this.filterActive = {...value, search: this.filterActive.search};
+    this.loadData();
+  }
+
   displayedColumns: string[] = ['iconLabel', 'title', 'action'];
   dataSource: Multimedia[] = DATA;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log('inicializado audios');
   }
 
   search(value: string) {
-    console.log('busqueda: ', value);
+    this.filterActive = {...this.filterActive, search: value};
+    this.loadData();
   }
 
   clearFilters() {
@@ -37,6 +47,10 @@ export class AudiosComponent implements OnInit {
       panelClass: ['ui-panelClass'],
       maxWidth: '900',
     })
+  }
+
+  loadData() {
+    console.log('busqueda: ', this.filterActive);
   }
 }
 
