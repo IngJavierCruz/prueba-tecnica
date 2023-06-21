@@ -10,10 +10,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   }
 })
 export class UIHeader implements OnInit {
-
+  menuOpen = true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    this.menuOpen = !this.menuOpen;
   }
 
 }

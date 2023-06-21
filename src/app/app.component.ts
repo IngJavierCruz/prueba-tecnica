@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 const SYSTEM_THEMES = {
   'ra': 'theme-ra',
@@ -12,8 +14,12 @@ const SYSTEM_THEMES = {
 export class AppComponent {
   title = 'challenge';
 
-  constructor() {
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
     this.changeTheme(SYSTEM_THEMES.valladolid);
+    this.registerIcons();
 
     // setTimeout(() => {
     //   this.changeTheme(SYSTEM_THEMES.ra);
@@ -38,5 +44,30 @@ export class AppComponent {
 
   getElementRef() {
     return document.documentElement;
+  }
+
+  registerIcons() {
+    const ICONS = [
+      {
+        icon: 'bell-on',
+        path: '../assets/icons/bell-on.svg',
+      },
+      {
+        icon: 'envelope-open-text',
+        path: '../assets/icons/envelope-open-text.svg',
+      },
+      {
+        icon: 'edit',
+        path: '../assets/icons/edit.svg',
+      },
+      {
+        icon: 'sign-out',
+        path: '../assets/icons/sign-out.svg',
+      },
+    ];
+
+    ICONS.forEach((x) => {
+      this.matIconRegistry.addSvgIcon(x.icon, this.domSanitizer.bypassSecurityTrustResourceUrl(x.path));
+    })
   }
 }

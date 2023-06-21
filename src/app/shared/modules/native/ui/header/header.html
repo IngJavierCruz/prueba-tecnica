@@ -1,5 +1,6 @@
-<div class="ui-header-toggle">
-  <i class="fas fa-bars"></i>
+<div class="ui-header-toggle" (click)="toggle()">
+  <i *ngIf="!menuOpen" class="fas fa-bars"></i>
+  <i *ngIf="menuOpen" class="fas fa-times"></i>
 </div>
 
 <div class="ui-header-logo">
@@ -10,7 +11,35 @@
 </div>
 
 <div class="ui-header-user">
-  <i class="fas fa-user"></i>
+  <div class="ui-header-user-icon">
+    <i class="fas fa-user"></i>
+  </div>
+
+  <div class="ui-header-user-name">
+    Victor Hugo Acosta Reyes
+  </div>
+
+  <div class="ui-header-user-menu" mat-button [matMenuTriggerFor]="menu">
+    <i class="fas fa-angle-down"></i>
+    <mat-menu #menu="matMenu" class="ui-panel-menu ui-panel-menu-inverse">
+      <button mat-menu-item>Editar perfil
+        <mat-icon svgIcon="bell-on"></mat-icon>
+      </button>
+      <button mat-menu-item>Notificaciones
+        <mat-icon svgIcon="envelope-open-text"></mat-icon>
+      </button>
+      <button mat-menu-item>Mensajes
+        <mat-icon svgIcon="edit"></mat-icon>
+      </button>
+      <button mat-menu-item>Cerrar sesión
+        <mat-icon svgIcon="sign-out"></mat-icon>
+      </button>
+      <button mat-menu-item>Cerrar sesión
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-menu>
+  </div>
 </div>
 
-<span></span>
+
+

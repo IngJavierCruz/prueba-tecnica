@@ -1,0 +1,41 @@
+.ui-panel-menu {
+  border-radius: 10px !important;
+  box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.2) !important;
+
+  & .mdc-list {
+    padding: 0 !important;
+
+    & button {
+      display: flex;
+      flex-direction: row;
+      min-height: 46px;
+      border-bottom: 1px solid #f4f4f6 !important;
+      font-family: Roboto !important;
+      font-size: 15px !important;
+      letter-spacing: 0;
+
+      & .mdc-list-item__primary-text {
+        font-size: 15px !important;
+        color: var(--text-color) !important;
+      }
+
+      & mat-icon {
+        color: var(--text-color) !important;
+        & svg {
+          height: 16px;
+          width: 16px;
+        }
+      }
+    }
+  }
+  &.ui-panel-menu-inverse {
+    & button {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      & mat-icon {
+        margin-right: 0;
+        margin-left: 20px;
+      }
+    }
+  }
+}

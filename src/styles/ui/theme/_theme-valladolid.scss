@@ -5,6 +5,7 @@
   $primary: #002161;
   $body-color: #444444;
   $body-bg: #004C98;
+  $body-bg-dark: #063564;
 
   $theme: (
     "primary": $primary,
@@ -59,6 +60,9 @@
   --#{$prefix}body-color: #{$body-color};
   --#{$prefix}body-bg: #{$body-bg};
   --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  --#{$prefix}body-bg-dark: #{$body-bg-dark};
+  --#{$prefix}body-bg-dark-rgb: #{to-rgb($body-bg-dark)};
+
 
   // COLORS COMPONENTS
   // scss-docs-start sidebar
