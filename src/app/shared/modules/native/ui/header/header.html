@@ -1,6 +1,6 @@
-<div class="ui-header-toggle" (click)="toggle()">
-  <i *ngIf="!menuOpen" class="fas fa-bars"></i>
-  <i *ngIf="menuOpen" class="fas fa-times"></i>
+<div class="ui-header-toggle" (click)="toggle.emit()">
+  <i *ngIf="!open" class="fas fa-bars"></i>
+  <i *ngIf="open" class="fas fa-times"></i>
 </div>
 
 <div class="ui-header-logo">
@@ -21,7 +21,7 @@
 
   <div class="ui-header-user-menu" mat-button [matMenuTriggerFor]="menu">
     <i class="fas fa-angle-down"></i>
-    <mat-menu #menu="matMenu" class="ui-panel-menu ui-panel-menu-inverse">
+    <mat-menu #menu="matMenu" class="ui-panel-menu ui-panel-menu-inverse" xPosition="before">
       <button mat-menu-item>Editar perfil
         <mat-icon svgIcon="bell-on"></mat-icon>
       </button>
@@ -33,9 +33,6 @@
       </button>
       <button mat-menu-item>Cerrar sesión
         <mat-icon svgIcon="sign-out"></mat-icon>
-      </button>
-      <button mat-menu-item>Cerrar sesión
-        <mat-icon>edit</mat-icon>
       </button>
     </mat-menu>
   </div>

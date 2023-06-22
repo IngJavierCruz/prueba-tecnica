@@ -11,10 +11,14 @@ import { UITabContentBody } from './tab-content-body/tab-content-body';
 import { UITabContentHeader } from './tab-content-header/tab-content-header';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer'; // <-- Import PdfJsViewerModule module
 import { MaterialModule } from '@shared/modules/material.module';
+import { UIMenu } from './menu/menu';
+import { RouterModule } from '@angular/router';
+
 
 const COMPONENTS = [
   UIHeader,
   UIMain,
+  UIMenu,
   UIMultimediaDialog,
   UISidebar,
   UISidebarFilter,
@@ -28,6 +32,7 @@ const COMPONENTS = [
     CommonModule,
     ReactiveFormsModule,
     PdfJsViewerModule,
+    RouterModule,
   ],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS]

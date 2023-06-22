@@ -1,0 +1,8 @@
+.ui-menu {
+  display: flex;
+  min-width: 330px;
+  padding: 25px 40px 20px 35px;
+  background-color: var(--app-body-bg-dark);
+  z-index: 2;
+  height: calc(100vh - var(--height-header));
+}
